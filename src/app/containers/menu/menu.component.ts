@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Category } from '../../category';
-import { Dish } from 'src/app/dish';
-import { MenuService } from '../../menu.service';
+import { Category } from '../../models/category';
+import { Dish } from 'src/app/models/dish';
+import { MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'app-menu',
@@ -10,15 +10,16 @@ import { MenuService } from '../../menu.service';
 })
 export class MenuComponent {
   categories: Category[] = [];
-  mostpop: Dish[] = [];
+  mostPopular: Dish[] = [];
 
   constructor(private menuService: MenuService) {}
 
   getCategories(): void {
     this.categories = this.menuService.getCategories();
   }
+  
   getMostpop(): void {
-    this.mostpop = this.menuService.getMostpop();
+    this.mostPopular = this.menuService.getMostPopularDishes();
   }
 
   ngOnInit(): void {

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Category } from '../../../category';
+import { Category } from '../../../models/category';
 import { Router } from '@angular/router';
 
 @Component({

@@ -1,1 +1,1 @@
-<app-foodlist [pizzalist]="pizzalist" [sushilist]="sushilist"></app-foodlist>
+<app-foodlist *ngIf="category" [pageTitle]="category.name" [dishes]="dishes"></app-foodlist>

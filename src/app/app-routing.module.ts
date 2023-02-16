@@ -7,12 +7,13 @@ import { MenuComponent } from './containers/menu/menu.component';
 const routes: Routes = [
   { path: 'main', component: MainComponent },
   { path: 'menu', component: MenuComponent },
-  { path: 'menu/pizza', component: CategoryViewComponent },
-  { path: 'menu/sushi', component: CategoryViewComponent },
+  { path: 'menu/:category', component: CategoryViewComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {scrollPositionRestoration: "enabled"})
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

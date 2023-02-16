@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Dish } from '../../dish';
+import { Category } from 'src/app/models/category';
+import { Dish } from '../../models/dish';
 
 @Component({
   selector: 'app-foodlist',
@@ -8,9 +9,6 @@ import { Dish } from '../../dish';
   styleUrls: ['./foodlist.component.scss']
 })
 export class FoodlistComponent {
-  @Input() mostpop: Dish[] = [];
-  @Input() pizzalist: Dish[] = [];
-  @Input() sushilist: Dish[] = [];
-
-  constructor(public router: Router){}
+  @Input() pageTitle = '';
+  @Input() dishes: Dish[] = [];
 }
