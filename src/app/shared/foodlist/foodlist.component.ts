@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Dish } from '../../dish';
 import { mostPopularDishes } from '../../mostpop';
 
@@ -8,5 +8,5 @@ import { mostPopularDishes } from '../../mostpop';
   styleUrls: ['./foodlist.component.scss']
 })
 export class FoodlistComponent {
-  mostpop = mostPopularDishes;
+  @Input() mostpop: Dish[] = [];
 }
