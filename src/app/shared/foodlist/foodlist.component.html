@@ -1,18 +1,40 @@
-<div class="my-6 mx-4 px-6 pt-10 pb-8 bg-gray-200 rounded-xl">
+<div class="my-6 mx-4 px-6 pt-10 pb-8 bg-gray-200 rounded-xl" *ngIf="router.url === '/menu'">
     <h2 class="mb-12 text-3xl text-center">Most popular</h2>
 
     <div class="grid grid-cols-3 gap-3">
         <div class="rounded-xl hover:shadow-2xl" *ngFor="let dish of mostpop">
-            <a href="#">
+            <a routerLink="{{ dish.link }}">
                 <div class="bg-white rounded-t-xl">
                     <img src="{{ dish.img }}" alt="{{ dish.name }}" class="rounded-t-xl">
                 </div>
 
                 <div class="p-6 bg-white rounded-b-xl border-t-4 border-gray-300">
-                    <h2 class="text-2xl">{{ dish.name }}</h2>
+                    <h2 class="text-2xl mb-3">{{ dish.name }} <span class="bg-red-500 rounded-sm ml-1 py-1 px-2 mr-auto" *ngIf="dish.sale">!SALE!</span></h2>
                     <p class="text-gray-500">Price: {{ (dish.price / 100) | currency:'UAH':'symbol-narrow':'1.2-2' }}</p>
                 </div>
             </a>
         </div>
     </div>
+
+</div>
+
+
+<div class="my-6 mx-4 px-6 pt-10 pb-8 bg-gray-200 rounded-xl" *ngIf="router.url === '/menu/pizza'">
+    <h2 class="mb-12 text-3xl text-center">Pizza</h2>
+
+    <div class="grid grid-cols-4 gap-4">
+        <div class="rounded-xl hover:shadow-2xl" *ngFor="let dish of pizzalist">
+            <a routerLink="{{ dish.link }}">
+                <div class="bg-white rounded-t-xl">
+                    <img src="{{ dish.img }}" alt="{{ dish.name }}" class="rounded-t-xl">
+                </div>
+
+                <div class="p-6 bg-white rounded-b-xl border-t-4 border-gray-300">
+                    <h2 class="text-2xl mb-3">{{ dish.name }} <span class="bg-red-500 rounded-lg ml-1 py-1 px-2 mr-auto" *ngIf="dish.sale">!SALE!</span></h2>
+                    <p class="text-gray-500 mt-auto">Price: {{ (dish.price / 100) | currency:'UAH':'symbol-narrow':'1.2-2' }}</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
 </div>

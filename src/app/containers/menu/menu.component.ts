@@ -21,7 +21,6 @@ export class MenuComponent {
     this.mostpop = this.menuService.getMostpop();
   }
 
-
   ngOnInit(): void {
     this.getCategories();
     this.getMostpop();

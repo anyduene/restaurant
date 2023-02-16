@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Dish } from '../../dish';
-import { mostPopularDishes } from '../../mostpop';
 
 @Component({
   selector: 'app-foodlist',
@@ -9,4 +9,7 @@ import { mostPopularDishes } from '../../mostpop';
 })
 export class FoodlistComponent {
   @Input() mostpop: Dish[] = [];
+  @Input() pizzalist: Dish[] = [];
+
+  constructor(public router: Router){}
 }

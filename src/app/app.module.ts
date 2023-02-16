@@ -9,6 +9,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { FoodlistComponent } from './shared/foodlist/foodlist.component';
 import { CategoriesComponent } from './containers/menu/categories/categories.component';
 import { MainComponent } from './containers/main/main.component';
+import { CategoryViewComponent } from './containers/category-view/category-view.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { MainComponent } from './containers/main/main.component';
     FoodlistComponent,
     CategoriesComponent,
     MainComponent,
+    CategoryViewComponent,
   ],
   imports: [
     BrowserModule,
