@@ -10,6 +10,7 @@ import { Dish } from '../../dish';
 export class FoodlistComponent {
   @Input() mostpop: Dish[] = [];
   @Input() pizzalist: Dish[] = [];
+  @Input() sushilist: Dish[] = [];
 
   constructor(public router: Router){}
 }

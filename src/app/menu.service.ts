@@ -5,8 +5,8 @@ import { CATEGORIES } from './categories';
 
 import { Dish } from './dish';
 import { mostPopularDishes } from './mostpop';
-
 import { pizzalist } from './pizzalist';
+import { sushilist } from './sushilist'
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +21,10 @@ export class MenuService {
   getPizzalist(): Dish[] {
     return pizzalist;
   }
+  getSushilist(): Dish[] {
+    return sushilist;
+  }
+  
 
   constructor() { }
 }

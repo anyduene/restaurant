@@ -9,14 +9,19 @@ import { Dish } from 'src/app/dish';
 })
 export class CategoryViewComponent {
   pizzalist: Dish[] = [];
+  sushilist: Dish[] = [];
 
   constructor(private menuService: MenuService) {}
 
   getPizzalist(): void {
     this.pizzalist = this.menuService.getPizzalist();
   }
+  getSushilist(): void {
+    this.sushilist = this.menuService.getSushilist();
+  }
 
   ngOnInit(): void {
     this.getPizzalist();
+    this.getSushilist();
   }
 }

@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'main', component: MainComponent },
   { path: 'menu', component: MenuComponent },
   { path: 'menu/pizza', component: CategoryViewComponent },
+  { path: 'menu/sushi', component: CategoryViewComponent },
 ];
 
 @NgModule({

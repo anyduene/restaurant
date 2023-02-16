@@ -4,4 +4,5 @@ export interface Dish {
     img: string;
     link: string;
     sale: boolean;
+    mostPopular: boolean;
 }
