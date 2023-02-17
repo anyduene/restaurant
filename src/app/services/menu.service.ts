@@ -15,6 +15,10 @@ export class MenuService {
     return this.categories;
   }
 
+  getDishByLink(link: string) {
+    return this.dishes.find(dish => dish.link === link.toLowerCase());
+  }
+
   getCategoryByName(name: string) {
     return this.categories.find(category => category.name.toLowerCase() === name.toLowerCase());
   }

@@ -10,6 +10,8 @@ import { FoodlistComponent } from './shared/foodlist/foodlist.component';
 import { CategoriesComponent } from './containers/menu/categories/categories.component';
 import { MainComponent } from './containers/main/main.component';
 import { CategoryViewComponent } from './containers/category-view/category-view.component';
+import { DishDetailComponent } from './containers/dish-detail-view/dish-detail/dish-detail.component';
+import { DishDetailViewComponent } from './containers/dish-detail-view/dish-detail-view.component';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import { CategoryViewComponent } from './containers/category-view/category-view.
     CategoriesComponent,
     MainComponent,
     CategoryViewComponent,
+    DishDetailComponent,
+    DishDetailViewComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,4 +6,5 @@ export interface Dish {
     link: string;
     sale: boolean;
     mostPopular: boolean;
+    description: string;
 }

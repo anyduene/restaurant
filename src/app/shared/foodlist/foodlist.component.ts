@@ -1,6 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { Category } from 'src/app/models/category';
 import { Dish } from '../../models/dish';
 
 @Component({
