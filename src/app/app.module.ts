@@ -13,6 +13,7 @@ import { CategoryViewComponent } from './containers/category-view/category-view.
 import { DishDetailComponent } from './containers/dish-detail-view/dish-detail/dish-detail.component';
 import { DishDetailViewComponent } from './containers/dish-detail-view/dish-detail-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FoodblockComponent } from './shared/foodblock/foodblock.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CategoryViewComponent,
     DishDetailComponent,
     DishDetailViewComponent,
+    FoodblockComponent,
   ],
   imports: [
     BrowserModule,
