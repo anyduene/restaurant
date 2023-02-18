@@ -31,9 +31,9 @@ export const dishes: Dish[] = [
     { name: 'Diabola',            categoryId: 3,  price: 7599,    img:"/assets/images/pancakes/Diabola.png",        link: "diabola",            sale: false,    mostPopular: false,   description: '' },
     { name: 'Sorento',            categoryId: 3,  price: 9699,    img:"/assets/images/pancakes/Sorento.png",        link: "sorento",            sale: false,    mostPopular: false,   description: '' },
 
-    { name: 'Kiwi Fresh',         categoryId: 4,  price: 3999,    img:"/assets/images/drinks/KiwiFresh.png",        link: "kiwi-fresh",         sale: false,    mostPopular: false,   description: '' },
-    { name: 'Red Grape Fresh',    categoryId: 4,  price: 3999,    img:"/assets/images/drinks/RedGrapeFresh.png",    link: "red-grape-fresh",    sale: false,    mostPopular: false,   description: '' },
-    { name: 'Passion Fresh',      categoryId: 4,  price: 3999,    img:"/assets/images/drinks/PassionFresh.png",     link: "passion-fresh",      sale: false,    mostPopular: false,   description: '' },
+    { name: 'Orange Fresh',       categoryId: 4,  price: 3999,    img:"/assets/images/drinks/OrangeFresh.png",      link: "orange-fresh",       sale: false,    mostPopular: false,   description: '' },
+    { name: 'Multifruit Fresh',   categoryId: 4,  price: 3999,    img:"/assets/images/drinks/MultifruitFresh.png",  link: "multifruit-fresh",   sale: false,    mostPopular: false,   description: '' },
+    { name: 'Lemonade',           categoryId: 4,  price: 3999,    img:"/assets/images/drinks/Lemonade.png",         link: "lemonade",           sale: false,    mostPopular: false,   description: '' },
     { name: 'Coca Cola',          categoryId: 4,  price: 4999,    img:"/assets/images/drinks/CocaCola.png",         link: "coca-cola",          sale: false,    mostPopular: false,   description: '' },
     { name: 'Bud Light',          categoryId: 4,  price: 5999,    img:"/assets/images/drinks/BudLight.png",         link: "bud-light",          sale: false,    mostPopular: true,    description: '' },
   ];
