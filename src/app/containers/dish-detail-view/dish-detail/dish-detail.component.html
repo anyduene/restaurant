@@ -7,5 +7,12 @@
         <h1 class="text-3xl mb-4">{{dish.name}}</h1>
         <p *ngIf="dish.categoryId!=4" class="text-left text-2xl text-gray-800">Ingridients: <span class="text-gray-600 ml-1">{{dish.description}}</span></p>
         <p *ngIf="dish.categoryId==4" class="text-left text-2xl text-gray-800">Just a {{dish.name}}</p>
+        <mat-form-field appearance="outline">
+            <mat-label>Choose an option</mat-label>
+            <mat-select>
+                <mat-option value="25">25cm</mat-option>
+                <mat-option value="35">35cm</mat-option>
+            </mat-select>
+        </mat-form-field>
     </div>
 </div>

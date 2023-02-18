@@ -11,7 +11,12 @@ import { Category } from 'src/app/models/category';
 })
 export class CategoryViewComponent {
   dishes: Dish[] = [];
-  category: Category | undefined;
+  category?: Category;
+  
+  //categoryId: number = 0;
+  //*ngIf="categoryId!=4"
+  //this.categoryId = this.category.id
+  
 
   constructor(
     private route: ActivatedRoute,
@@ -24,6 +29,7 @@ export class CategoryViewComponent {
     
     if (this.category) {
       this.dishes = this.menuService.getDishesByCategory(this.category.id);
+      
     }
   }
 }

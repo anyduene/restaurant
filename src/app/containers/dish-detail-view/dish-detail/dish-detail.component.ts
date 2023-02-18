@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Dish } from 'src/app/models/dish';
 
 @Component({
@@ -8,4 +9,6 @@ import { Dish } from 'src/app/models/dish';
 })
 export class DishDetailComponent {
   @Input() dish!: Dish;
+
+  diametr = new FormControl(false);
 }

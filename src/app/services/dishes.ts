@@ -2,8 +2,8 @@ import { Dish } from "../models/dish";
 
 export const dishes: Dish[] = [
     { name: 'Diablo',             categoryId: 1,  price: 10799,   img:"/assets/images/pizza/Diablo.png",            link: 'diablo',             sale: true,     mostPopular: true,    description: 'бекон, салямі , прошуто кото, свіжі томати, перець гострий “рepperoni”, сир “моцарела”, соус “чилі”, соус “маринара”' },
-    { name: '4-Cheese',           categoryId: 1,  price: 9859,    img:"/assets/images/pizza/4-Cheese.png",          link: "4-cheese",           sale: false,    mostPopular: true,    description: '' },
-    { name: 'Americano De Luxe',  categoryId: 1,  price: 14959,   img:"/assets/images/pizza/AmericanoDeLuxe.png",   link: "americano-deluxe",   sale: true,    mostPopular: false,   description: '' },
+    { name: '4-Cheese',           categoryId: 1,  price: 9859,    img:"/assets/images/pizza/4-Cheese.png",          link: "4-cheese",           sale: false,    mostPopular: false,   description: '' },
+    { name: 'Americano De Luxe',  categoryId: 1,  price: 14959,   img:"/assets/images/pizza/AmericanoDeLuxe.png",   link: "americano-deluxe",   sale: true,     mostPopular: false,   description: '' },
     { name: 'Italliano De Luxe',  categoryId: 1,  price: 13919,   img:"/assets/images/pizza/ItallianoDeLuxe.png",   link: "italliano-deluxe",   sale: false,    mostPopular: false,   description: '' },
     { name: 'Margarita',          categoryId: 1,  price: 11699,   img:"/assets/images/pizza/Margarita.png",         link: "margarita",          sale: false,    mostPopular: false,   description: '' },
     { name: 'Peperoni',           categoryId: 1,  price: 11899,   img:"/assets/images/pizza/Peperoni.png",          link: "peperoni",           sale: false,    mostPopular: false,   description: '' },

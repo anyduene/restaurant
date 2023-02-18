@@ -14,6 +14,8 @@ import { DishDetailComponent } from './containers/dish-detail-view/dish-detail/d
 import { DishDetailViewComponent } from './containers/dish-detail-view/dish-detail-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FoodblockComponent } from './shared/foodblock/foodblock.component';
+import { FilterComponent } from './shared/filter/filter.component';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -29,11 +31,13 @@ import { FoodblockComponent } from './shared/foodblock/foodblock.component';
     DishDetailComponent,
     DishDetailViewComponent,
     FoodblockComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
