@@ -5,6 +5,7 @@
 
     <div class="bg-gray-200 rounded-xl w-full text-center p-4">
         <h1 class="text-3xl mb-4">{{dish.name}}</h1>
-        <p class="text-left text-2xl">Ingridients: <span class="text-gray-600 ml-1">{{dish.description}}</span></p>
+        <p *ngIf="dish.categoryId!=4" class="text-left text-2xl text-gray-800">Ingridients: <span class="text-gray-600 ml-1">{{dish.description}}</span></p>
+        <p *ngIf="dish.categoryId==4" class="text-left text-2xl text-gray-800">Just a {{dish.name}}</p>
     </div>
 </div>
