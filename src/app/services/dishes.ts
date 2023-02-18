@@ -34,6 +34,6 @@ export const dishes: Dish[] = [
     { name: 'Kiwi Fresh',         categoryId: 4,  price: 3999,    img:"/assets/images/drinks/KiwiFresh.png",        link: "kiwi-fresh",         sale: false,    mostPopular: false,   description: '' },
     { name: 'Red Grape Fresh',    categoryId: 4,  price: 3999,    img:"/assets/images/drinks/RedGrapeFresh.png",    link: "red-grape-fresh",    sale: false,    mostPopular: false,   description: '' },
     { name: 'Passion Fresh',      categoryId: 4,  price: 3999,    img:"/assets/images/drinks/PassionFresh.png",     link: "passion-fresh",      sale: false,    mostPopular: false,   description: '' },
-    { name: 'Coca Cola',          categoryId: 4,  price: 4999,    img:"/assets/images/drinks/CocaCola.png",         link: "apple-fresh",        sale: false,    mostPopular: false,   description: '' },
-    { name: 'Bud Light',          categoryId: 4,  price: 5999,    img:"/assets/images/drinks/BudLight.png",         link: "apple-fresh",        sale: false,    mostPopular: true,    description: '' },
+    { name: 'Coca Cola',          categoryId: 4,  price: 4999,    img:"/assets/images/drinks/CocaCola.png",         link: "coca-cola",          sale: false,    mostPopular: false,   description: '' },
+    { name: 'Bud Light',          categoryId: 4,  price: 5999,    img:"/assets/images/drinks/BudLight.png",         link: "bud-light",          sale: false,    mostPopular: true,    description: '' },
   ];

@@ -12,6 +12,7 @@ import { MainComponent } from './containers/main/main.component';
 import { CategoryViewComponent } from './containers/category-view/category-view.component';
 import { DishDetailComponent } from './containers/dish-detail-view/dish-detail/dish-detail.component';
 import { DishDetailViewComponent } from './containers/dish-detail-view/dish-detail-view.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { DishDetailViewComponent } from './containers/dish-detail-view/dish-deta
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
