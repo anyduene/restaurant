@@ -10,5 +10,5 @@ import { Dish } from 'src/app/models/dish';
 export class DishDetailComponent {
   @Input() dish!: Dish;
 
-  diametr = new FormControl(false);
+  diameter = new FormControl(25);
 }
