@@ -8,4 +8,5 @@ import { Dish } from 'src/app/models/dish';
 })
 export class FoodblockComponent {
   @Input() dish!: Dish;
+  @Input() foundDish?: Dish;
 }

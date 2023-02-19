@@ -1,4 +1,4 @@
 <div class="flex flex-row">
-    <app-filter></app-filter>
-    <app-foodlist *ngIf="category" [pageTitle]="category.name" [dishes]="dishes"></app-foodlist>
+    <app-filter (inputValueChange)="onInputChange($event)"></app-filter>
+    <app-foodlist *ngIf="category" [pageTitle]="category.name" [dishes]="dishes" [foundDish]="foundDish"></app-foodlist>
 </div>

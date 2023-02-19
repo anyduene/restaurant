@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuService } from 'src/app/services/menu.service';
+import { FilterService } from 'src/app/services/filter.service';
 import { Dish } from 'src/app/models/dish';
 import { ActivatedRoute } from '@angular/router';
 import { Category } from 'src/app/models/category';
@@ -12,6 +13,7 @@ import { Category } from 'src/app/models/category';
 export class CategoryViewComponent {
   dishes: Dish[] = [];
   category?: Category;
+  foundDish?: Dish;
   
   //categoryId: number = 0;
   //*ngIf="categoryId!=4"
@@ -21,6 +23,7 @@ export class CategoryViewComponent {
   constructor(
     private route: ActivatedRoute,
     private menuService: MenuService,
+    private filterSercive: FilterService,
   ) {}
 
   ngOnInit() {
@@ -31,5 +34,9 @@ export class CategoryViewComponent {
       this.dishes = this.menuService.getDishesByCategory(this.category.id);
       
     }
+  }
+
+  onInputChange(inputValue: string) {
+    this.foundDish = this. filterSercive.getDishByName(inputValue)
   }
 }
