@@ -5,7 +5,8 @@
 
     <div class="bg-gray-200 rounded-xl w-full  p-4 flex-col">
         <h1 class="text-3xl mb-4 text-center">{{dish.name}}</h1>
-        <p *ngIf="dish.categoryId!=4" class="text-left text-2xl text-gray-800">Ingridients: <span class="text-gray-600 ml-1">{{dish.description}}</span></p>
+        <p *ngIf="dish.categoryId!=4" class="text-left text-2xl text-gray-800">Ingridients: <span
+                class="text-gray-600 ml-1">{{dish.description}}</span></p>
         <p *ngIf="dish.categoryId==4" class="text-left text-2xl text-gray-800">Just a {{dish.name}}</p>
         <mat-form-field appearance="fill" *ngIf="dish.categoryId==1" class="mt-5">
             <mat-label>Diameter</mat-label>

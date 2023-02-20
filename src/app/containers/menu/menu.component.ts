@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Category } from '../../models/category';
-import { Dish } from 'src/app/models/dish';
 import { MenuService } from '../../services/menu.service';
 
 @Component({
@@ -9,21 +7,12 @@ import { MenuService } from '../../services/menu.service';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
-  categories: Category[] = [];
-  mostPopular: Dish[] = [];
+  categories$ = this.menuService.categories$;
+  mostPopular$ = this.menuService.mostPopularDishes$;
 
-  constructor(private menuService: MenuService) {}
+  constructor(private menuService: MenuService) { }
 
-  getCategories(): void {
-    this.categories = this.menuService.getCategories();
-  }
-  
-  getMostpop(): void {
-    this.mostPopular = this.menuService.getMostPopularDishes();
-  }
-
-  ngOnInit(): void {
-    this.getCategories();
-    this.getMostpop();
+  ngOnInit() {
+    this.menuService.reset();
   }
 }

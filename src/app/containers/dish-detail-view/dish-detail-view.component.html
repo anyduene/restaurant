@@ -1,1 +1,6 @@
-<app-dish-detail *ngIf="dish" [dish]="dish"></app-dish-detail>
+<app-dish-detail *ngIf="dish$ | async as dish; else notFound" [dish]="dish"></app-dish-detail>
+<ng-template #notFound>
+    <div class="w-full h-full flex justify-center items-center">
+        <h2>Dish not found</h2>
+    </div>
+</ng-template>

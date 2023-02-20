@@ -9,15 +9,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./dish-detail-view.component.scss']
 })
 export class DishDetailViewComponent {
-  dish?: Dish;
+  dish$ = this.menuService.selectedDish$;
 
   constructor(
     private route: ActivatedRoute,
     private menuService: MenuService,
-  ) {}
+  ) { }
 
   ngOnInit() {
-    const dishSlug = this.route.snapshot.params['dish'];
-    this.dish = this.menuService.getDishByLink(dishSlug);
+    const dishLink = this.route.snapshot.params['dish'];
+    this.menuService.setSeletedDishByLink(dishLink);
   }
 }

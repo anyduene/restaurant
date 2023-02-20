@@ -8,7 +8,5 @@ import { Dish } from '../../models/dish';
 })
 export class FoodlistComponent {
   @Input() pageTitle = '';
-  @Input() dishesByCategory: Dish[] = [];
-  @Input() foundDish?: Dish;
-  @Input() saleDishes!: Dish[];
+  @Input() dishes: Dish[] = [];
 }

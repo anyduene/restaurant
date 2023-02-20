@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-filter',
@@ -6,16 +6,17 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent {
-  inputDishName: string = '';
-  isChecked: boolean = false;
-  @Output() inputValueChange: EventEmitter<string> = new EventEmitter<string>();
-  @Output() checkboxValueChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-  
-  onButtonClick() {
-    this.inputValueChange.emit(this.inputDishName);
+  @Input() searchName = '';
+  @Input() showOnlySale = false;
+
+  @Output() filter = new EventEmitter<string>();
+  @Output() onlySale = new EventEmitter<boolean>();
+
+  onFilter() {
+    this.filter.emit(this.searchName);
   }
 
-  onButtonClickCheckbox() {
-    this.checkboxValueChange.emit(this.isChecked);
+  onOnlySaleChange() {
+    this.onlySale.emit(this.showOnlySale);
   }
 }

@@ -1,4 +1,7 @@
 <div class="flex flex-row">
-    <app-filter (inputValueChange)="onInputChange($event)" (checkboxValueChange)="onCheckboxChanged($event)"></app-filter>
-    <app-foodlist *ngIf="category" [pageTitle]="category.name" [dishesByCategory]="dishesByCategory" [saleDishes]="saleDishes" [foundDish]="foundDish"></app-foodlist>
+    <app-filter [searchName]="(searchName$ | async)!" [showOnlySale]="(onlySale$ | async)!" (filter)="onSearch($event)"
+        (onlySale)="onToggleSale($event)">
+    </app-filter>
+    <app-foodlist *ngIf="category$ | async as category" [pageTitle]="category.name" [dishes]="(dishes$ | async)!">
+    </app-foodlist>
 </div>
