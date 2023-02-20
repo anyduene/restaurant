@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { dishes } from './dishes';
 import { Dish } from '../models/dish';
 
@@ -6,13 +7,13 @@ import { Dish } from '../models/dish';
   providedIn: 'root'
 })
 export class FilterService {
-  foundDish?: Dish;
-
-  getDishByName(name: string, categoryDishes: Dish[] = []) {
-    return this.foundDish = categoryDishes.find(dish => dish.name.toLowerCase() === name.toLowerCase());
+  getDishByName(name: string, categoryDishes: Dish[]): Observable<Dish | undefined> {
+    const foundDish = of(categoryDishes.find(dish => dish.name.toLowerCase() === name.toLowerCase()))
+    return foundDish;
   }
 
-  getSaleDishes(categoryDishes: Dish[] = []) {
-      return categoryDishes.filter(dish => dish.sale);
+  getSaleDishes(categoryDishes: Dish[] = []): Observable<Dish[]> {
+    const saleDishes = of(categoryDishes.filter(dish => dish.sale))
+    return saleDishes;
   }
 }

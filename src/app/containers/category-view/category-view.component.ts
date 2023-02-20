@@ -38,16 +38,18 @@ export class CategoryViewComponent {
   }
 
   onInputChange(inputValue: string) {
-    if(inputValue!=''){
-      this.foundDish = this.filterSercive.getDishByName(inputValue, this.dishesByCategory)
+    if(inputValue != ''){
+      this.filterSercive.getDishByName(inputValue, this.dishesByCategory)
+      .subscribe(foundDish => this.foundDish = this.foundDish);
     } else {
       inputValue = '';
     }
   }
-
+  
   onCheckboxChanged(checkboxStatus: boolean) {
     if(checkboxStatus != true) {
-      this.saleDishes = this.filterSercive.getSaleDishes(this.dishesByCategory) 
+      this.filterSercive.getSaleDishes(this.dishesByCategory)
+      .subscribe(saleDishes => this.saleDishes = saleDishes);
     } else {
       this.saleDishes = [];
     } 

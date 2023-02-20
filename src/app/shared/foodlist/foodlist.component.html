@@ -1,4 +1,4 @@
-<!-- <div class="my-6 mx-4 px-6 pt-10 pb-8 bg-gray-200 rounded-xl" *ngIf="foundDish!=undefined">
+<div class="my-6 mx-4 px-6 pt-10 pb-8 bg-gray-200 rounded-xl" *ngIf="foundDish!=undefined">
     <h2 class="mb-12 text-3xl text-center">{{ pageTitle }}</h2>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -17,12 +17,13 @@
             <app-foodblock [dish]="dish"></app-foodblock>
         </div>
     </div>
-</div> -->
+</div>
 
 
 
 
-<div class="my-6 mx-4 px-6 pt-10 pb-8 bg-gray-200 rounded-xl">
+
+<!-- <div class="my-6 mx-4 px-6 pt-10 pb-8 bg-gray-200 rounded-xl">
     <div *ngIf="foundDish!=undefined">
         <h2 class="mb-12 text-3xl text-center">{{ pageTitle }}</h2>
 
@@ -43,7 +44,7 @@
         </div>
     </div>
 
-    <div *ngIf="foundDish==undefined">
+    <div *ngIf="foundDish==undefined && saleDishes==[] ">
         <h2 class="mb-12 text-3xl text-center">{{ pageTitle }}</h2>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -52,4 +53,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
