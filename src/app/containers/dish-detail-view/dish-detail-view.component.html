@@ -1,6 +1,6 @@
 <app-dish-detail *ngIf="dish$ | async as dish; else notFound" [dish]="dish"></app-dish-detail>
 <ng-template #notFound>
     <div class="w-full h-full flex justify-center items-center">
-        <h2>Dish not found</h2>
+        <img src="../../../assets/images/Error404.jpeg" alt="Error404.jpeg">
     </div>
 </ng-template>
