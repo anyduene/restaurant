@@ -11,9 +11,10 @@ import { Category } from 'src/app/models/category';
   styleUrls: ['./category-view.component.scss']
 })
 export class CategoryViewComponent {
-  dishes: Dish[] = [];
+  dishesByCategory: Dish[] = [];
   category?: Category;
-  foundDish?: Dish;
+  foundDish?: Dish = undefined;
+  saleDishes: Dish[] = [];
   
   //categoryId: number = 0;
   //*ngIf="categoryId!=4"
@@ -31,12 +32,24 @@ export class CategoryViewComponent {
     this.category = this.menuService.getCategoryByName(categoryName);
     
     if (this.category) {
-      this.dishes = this.menuService.getDishesByCategory(this.category.id);
+      this.dishesByCategory = this.menuService.getDishesByCategory(this.category.id);
       
     }
   }
 
   onInputChange(inputValue: string) {
-    this.foundDish = this. filterSercive.getDishByName(inputValue)
+    if(inputValue!=''){
+      this.foundDish = this.filterSercive.getDishByName(inputValue, this.dishesByCategory)
+    } else {
+      inputValue = '';
+    }
+  }
+
+  onCheckboxChanged(checkboxStatus: boolean) {
+    if(checkboxStatus != true) {
+      this.saleDishes = this.filterSercive.getSaleDishes(this.dishesByCategory) 
+    } else {
+      this.saleDishes = [];
+    } 
   }
 }

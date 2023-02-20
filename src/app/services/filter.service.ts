@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
 import { dishes } from './dishes';
+import { Dish } from '../models/dish';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilterService {
-  private dishes = dishes;
+  foundDish?: Dish;
 
-  getDishByName(name: string){
-    return this.dishes.find(dish => dish.name.toLowerCase() === name.toLowerCase());
+  getDishByName(name: string, categoryDishes: Dish[] = []) {
+    return this.foundDish = categoryDishes.find(dish => dish.name.toLowerCase() === name.toLowerCase());
   }
 
-  constructor() { }
+  getSaleDishes(categoryDishes: Dish[] = []) {
+      return categoryDishes.filter(dish => dish.sale);
+  }
 }

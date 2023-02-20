@@ -4,5 +4,12 @@
     <form class="flex items-center my-5">
         <input class="px-4 py-2 border rounded-l-lg w-96 focus:outline-none" [(ngModel)]="inputDishName" [ngModelOptions]="{standalone: true}" type="text" placeholder="Search...">
         <button class="bg-teal-500 text-white px-4 py-2 rounded-r-lg hover:bg-teal-700 focus:outline-none" (click)="onButtonClick()">Search</button>
-    </form>  
+    </form>
+
+    <div class="flex flex-row">
+        <p class="mr-3">Show only sale:</p>
+            <label (click)="onButtonClickCheckbox()" class="inline-flex items-center">
+                <input type="checkbox" [(ngModel)]="isChecked" class="form-checkbox h-5 w-5 text-gray-600 rounded-full border border-gray-400 checked:bg-blue-600 checked:border-transparent transition duration-200">
+            </label>
+    </div>
 </div>
