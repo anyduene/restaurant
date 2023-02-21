@@ -30,4 +30,9 @@ export class CategoryViewComponent {
   onToggleSale(checked: boolean) {
     this.menuService.setOnlySale(checked);
   }
+
+  addToCart(nameToAdd: string) {
+    this.menuService.setSearchName(nameToAdd);
+    this.menuService.addToCart()
+  }
 }
