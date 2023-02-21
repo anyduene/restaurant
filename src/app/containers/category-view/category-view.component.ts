@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MenuService } from 'src/app/services/menu.service';
 import { CartService } from 'src/app/services/cart.service';
 import { ActivatedRoute } from '@angular/router';
+import { Dish } from 'src/app/models/dish';
 
 @Component({
   selector: 'app-category-view',
@@ -13,7 +14,6 @@ export class CategoryViewComponent {
   dishes$ = this.menuService.filteredDishes$;
   searchName$ = this.menuService.searchName$;
   onlySale$ = this.menuService.onlySale$;
-  dishToAddByLink$ = this.cartService.dishToAddByLink$;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,9 +34,7 @@ export class CategoryViewComponent {
     this.menuService.setOnlySale(checked);
   }
 
-  addToCart(dishToAddLink: string) {
-    this.cartService.dishToAddLink(dishToAddLink);
-
-    console.log(this.dishToAddByLink$)
+  onAddToCart(dish: Dish) {
+    this.cartService.addDish(dish);
   }
 }

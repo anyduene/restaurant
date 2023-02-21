@@ -9,9 +9,9 @@ import { Dish } from '../../models/dish';
 export class FoodlistComponent {
   @Input() pageTitle = '';
   @Input() dishes: Dish[] = [];
-  @Output() dishToAddLink = new EventEmitter<string>();
+  @Output() addToCart = new EventEmitter<Dish>();
 
-  addToCart(dishToAddLink: string) {
-    this.dishToAddLink.emit(dishToAddLink);
+  onAddToCart(dish: Dish) {
+    this.addToCart.emit(dish);
   }
 }

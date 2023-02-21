@@ -1,0 +1,57 @@
+.c-cart__wrap {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+}
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+user agent stylesheet div {
+    display: block;
+}
+
+body,
+.c-page-header__title-or,
+.c-page-header__tab-login--not-active,
+.c-page-header__tab-register--not-active {
+    font-family: "Roboto", sans-serif !important;
+    color: #afafaf;
+}
+
+body {
+    font-size: 14px;
+    line-height: 24px;
+    background-color: #FFF;
+}
+
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+}
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}

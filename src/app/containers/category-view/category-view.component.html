@@ -3,6 +3,6 @@
         (onlySale)="onToggleSale($event)">
     </app-filter>
     <app-foodlist *ngIf="category$ | async as category" [pageTitle]="category.name" [dishes]="(dishes$ | async)!"
-        (dishToAddLink)="addToCart($event)">
+        (addToCart)="onAddToCart($event)">
     </app-foodlist>
 </div>

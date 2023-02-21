@@ -9,9 +9,9 @@ import { Dish } from 'src/app/models/dish';
 export class FoodblockComponent {
   @Input() dish!: Dish;
   @Input() foundDish?: Dish;
-  @Output() dishToAddLink = new EventEmitter<string>();
+  @Output() addToCart = new EventEmitter<Dish>();
 
-  addToCartClick() {
-    this.dishToAddLink.emit(this.dish.link);
+  onAddToCart() {
+    this.addToCart.emit(this.dish);
   }
 }

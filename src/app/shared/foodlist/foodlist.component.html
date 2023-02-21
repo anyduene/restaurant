@@ -3,7 +3,7 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         <div *ngFor="let dish of dishes">
-            <app-foodblock [dish]="dish" (dishToAddLink)="addToCart($event)"></app-foodblock>
+            <app-foodblock [dish]="dish" (addToCart)="onAddToCart($event)"></app-foodblock>
         </div>
     </div>
 
