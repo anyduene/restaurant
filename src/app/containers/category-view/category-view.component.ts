@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuService } from 'src/app/services/menu.service';
+import { CartService } from 'src/app/services/cart.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -12,10 +13,12 @@ export class CategoryViewComponent {
   dishes$ = this.menuService.filteredDishes$;
   searchName$ = this.menuService.searchName$;
   onlySale$ = this.menuService.onlySale$;
+  dishToAddByLink$ = this.cartService.dishToAddByLink$;
 
   constructor(
     private route: ActivatedRoute,
     private menuService: MenuService,
+    private cartService: CartService,
   ) { }
 
   ngOnInit() {
@@ -31,8 +34,9 @@ export class CategoryViewComponent {
     this.menuService.setOnlySale(checked);
   }
 
-  addToCart(nameToAdd: string) {
-    this.menuService.setSearchName(nameToAdd);
-    this.menuService.addToCart()
+  addToCart(dishToAddLink: string) {
+    this.cartService.dishToAddLink(dishToAddLink);
+
+    console.log(this.dishToAddByLink$)
   }
 }

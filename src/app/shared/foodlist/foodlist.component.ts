@@ -7,13 +7,11 @@ import { Dish } from '../../models/dish';
   styleUrls: ['./foodlist.component.scss']
 })
 export class FoodlistComponent {
-  addToCartStatus!: string;
   @Input() pageTitle = '';
   @Input() dishes: Dish[] = [];
-  @Output() addToCartNumber = new EventEmitter<string>();
+  @Output() dishToAddLink = new EventEmitter<string>();
 
-  addToCart(addToCart: string) {
-    this.addToCartStatus = addToCart;
-    this.addToCartNumber.emit(this.addToCartStatus);
+  addToCart(dishToAddLink: string) {
+    this.dishToAddLink.emit(dishToAddLink);
   }
 }

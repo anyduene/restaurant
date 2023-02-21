@@ -18,6 +18,7 @@ import { FilterComponent } from './shared/filter/filter.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DishDetailViewComponent,
     FoodblockComponent,
     FilterComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
