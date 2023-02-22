@@ -1,2 +1,3 @@
-<app-foodlist pageTitle="Most Popular" [dishes]="(mostPopular$ | async)!"></app-foodlist>
+<app-foodlist pageTitle="Most Popular" [dishes]="(mostPopular$ | async)!"
+    (addToCart)="onAddToCart($event)"></app-foodlist>
 <app-categories [categories]="(categories$ | async)!"></app-categories>

@@ -20,6 +20,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartComponent } from './containers/cart/cart.component';
 import { ErrorComponent } from './shared/error/error.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { ErrorComponent } from './shared/error/error.component';
     MatSelectModule,
     ReactiveFormsModule,
     FormsModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

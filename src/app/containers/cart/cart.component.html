@@ -7,24 +7,23 @@
 <body class="bg-gray-100">
     <div class="container mx-auto mt-10">
         <div class="flex my-10 ">
-            <div class="w-3/4 bg-white px-10 py-10 border-2 border-gray-300 rounded-l-xl">
-                <div class="flex justify-between border-b pb-8">
+            <div class="w-3/4 bg-white px-12 py-10 border-2 border-gray-300 rounded-l-xl relative">
+                <div class=" flex justify-between border-b pb-8">
                     <h1 class="font-semibold text-2xl text-gray-500">Shopping Cart</h1>
-                    <h2 class="font-semibold text-2xl text-gray-500">3 Items</h2>
+                    <h2 class="font-semibold text-2xl text-gray-500">{{allDishesCount}} Dishes</h2>
                 </div>
-                <div class="flex mt-10 mb-5">
+                <div class="flex mt-10 mb-5" *ngIf="allDishesCount>0">
                     <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Product Details</h3>
                     <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5">Quantity
                     </h3>
                     <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5">Price</h3>
                     <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5">Total</h3>
                 </div>
-
-
-
-
+                <div *ngIf="allDishesCount===0" class="h-96 flex">
+                    <span class="text-gray-500 font-semibold text-2xl m-auto">Your cart is empty :(</span>
+                </div>
                 <div class="flex items-center bg-gray-100 hover:bg-gray-200 -mx-8 px-6 py-5 mt-2"
-                    *ngFor="let dish of (dishes$ | async)">
+                    *ngFor="let dish of dishes">
                     <div class="flex w-2/5"> <!-- product -->
                         <div class="w-20">
                             <img class="h-24" src="{{dish.img}}" alt="{{dish.img}}">
@@ -37,14 +36,14 @@
                     <div class="flex justify-center min-1/5 rounded-xl">
                         <div class="custom-number-input h-10 w-32 m-auto">
                             <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
-                                <button data-action="decrement"
+                                <button (click)="countDecrease(dish)"
                                     class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
                                     <span class="m-auto text-2xl font-thin">−</span>
                                 </button>
                                 <input type="number"
                                     class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700"
-                                    id="count" value="0">
-                                <button data-action="increment"
+                                    id="count" value={{dish.count}}>
+                                <button (click)="countIncrease(dish)"
                                     class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
                                     <span class="m-auto text-2xl font-thin">+</span>
                                 </button>
@@ -52,54 +51,59 @@
                         </div>
                     </div>
 
-                    <span class="text-center w-1/5 font-semibold text-sm" *ngIf="dish.sale!=true">{{ ((dish.price / 100)
+                    <span class="text-center w-1/5 font-semibold text-sm" *ngIf="dish.sale">{{ (dish.price / 100) * 0.8
+                        | currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
+                    <span class="text-center w-1/5 font-semibold text-sm" *ngIf="dish.sale">{{ ((dish.price / 100) * 0.8
                         *
-                        0.8) | currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
-                    <span class="text-center w-1/5 font-semibold text-sm" *ngIf="dish.sale!=true">{{ ((dish.price / 100)
-                        *
-                        0.8) | currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
+                        dish.count)
+                        | currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
 
-                    <span class="text-center w-1/5 font-semibold text-sm" *ngIf="dish.sale">{{ ((dish.price / 100) *
-                        0.8) | currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
-                    <span class="text-center w-1/5 font-semibold text-sm" *ngIf="dish.sale">{{ ((dish.price / 100) *
-                        0.8) | currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
+
+                    <span class="text-center w-1/5 font-semibold text-sm" *ngIf="dish.sale!=true">{{ (dish.price / 100)
+                        | currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
+                    <span class="text-center w-1/5 font-semibold text-sm" *ngIf="dish.sale!=true">{{ (dish.price / 100 *
+                        dish.count) | currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
                 </div>
 
-                <a href="#" class="flex font-semibold text-indigo-600 text-sm mt-10">
-
-                    <svg class="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512">
-                        <path
-                            d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" />
-                    </svg>
-                    <span>Continue Shopping</span>
-                </a>
+                <button routerLink="/menu" class="flex font-semibold text-teal-500 text-sm mt-10">
+                    <span class="text-teal-500 hover:text-teal-600 absolute bottom-0 pb-4"><-- Continue Shopping</span>
+                </button>
             </div>
 
             <div id="summary" class="w-1/4 px-8 py-10 border-y-2 border-r-2 border-gray-300 rounded-r-xl">
                 <h1 class="font-semibold text-2xl border-b pb-8 text-gray-500">Order Summary</h1>
                 <div class="flex justify-between mt-10 mb-5">
-                    <span class="font-semibold text-sm uppercase text-gray-500">Items 3</span>
-                    <span class="font-semibold text-sm text-gray-500">{{totalCost$}}</span>
+                    <span class="font-semibold text-sm uppercase text-gray-500">{{allDishesCount}} Dishes</span>
+                    <span class="font-semibold text-sm text-gray-500">{{(totalCost$ | async)! / 100 |
+                        currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
                 </div>
-                <div class="mb-5">
-                    <label class="font-medium inline-block mb-3 text-sm uppercase">Time</label>
-                    <select class="block p-2 text-gray-600 w-full text-sm">
-                        <option>Standard - $10.00</option>
-                        <option>Fast - $15.00</option>
-                    </select>
+                <div class="mb-2">
+                    <label class="font-medium inline-block mb-3 text-sm uppercase">Cooking time</label>
+                    <br>
+                    <mat-radio-group [(ngModel)]="cookingTime">
+                        <mat-radio-button [value]="standart" class="mr-5">Standart</mat-radio-button>
+                        <mat-radio-button [value]="fast">Fast (+100₴)</mat-radio-button>
+                    </mat-radio-group>
                 </div>
-                <!-- <div class="py-10">
+                <div class="py-2">
                     <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Promo Code</label>
                     <input type="text" id="promo" placeholder="Enter your code" class="p-2 text-sm w-full">
-                </div> -->
-                <button class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase">Apply</button>
+                </div>
+                <button
+                    class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercaser rounded-md">Apply</button>
                 <div class="border-t mt-8">
                     <div class="flex font-semibold justify-between py-6 text-sm uppercase">
                         <span class="text-gray-500">Total cost</span>
-                        <span class="text-gray-500">$600</span>
+                        <span class="text-gray-500" *ngIf="cookingTime === standart">{{(totalCost$ | async)! / 100 |
+                            currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
+
+                        <span class="text-gray-500" *ngIf="cookingTime === fast">{{(totalCost$ | async)! / 100 + fast |
+                            currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
                     </div>
-                    <button
-                        class="bg-teal-400 font-semibold hover:bg-teal-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
+                    <button *ngIf="allDishesCount>0"
+                        class="bg-teal-400 font-semibold hover:bg-teal-600 py-3 text-sm text-white uppercase w-full rounded-md">Checkout</button>
+                    <button *ngIf="allDishesCount===0"
+                        class="bg-gray-300 font-semibold py-3 text-sm text-white uppercase w-full rounded-md">Checkout</button>
                 </div>
             </div>
 

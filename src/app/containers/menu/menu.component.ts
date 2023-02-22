@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
+import { CartService } from 'src/app/services/cart.service';
+import { Dish } from 'src/app/models/dish';
 
 @Component({
   selector: 'app-menu',
@@ -10,9 +12,15 @@ export class MenuComponent {
   categories$ = this.menuService.categories$;
   mostPopular$ = this.menuService.mostPopularDishes$;
 
-  constructor(private menuService: MenuService) { }
+  constructor(
+    private menuService: MenuService,
+    private cartService: CartService) { }
 
   ngOnInit() {
     this.menuService.reset();
+  }
+
+  onAddToCart(dish: Dish) {
+    this.cartService.addDish(dish);
   }
 }
