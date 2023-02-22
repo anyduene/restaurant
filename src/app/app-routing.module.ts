@@ -5,6 +5,7 @@ import { MainComponent } from './containers/main/main.component';
 import { MenuComponent } from './containers/menu/menu.component';
 import { DishDetailViewComponent } from './containers/dish-detail-view/dish-detail-view.component';
 import { CartComponent } from './containers/cart/cart.component';
+import { ErrorComponent } from './shared/error/error.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'menu/dishes/:dish', component: DishDetailViewComponent },
   { path: 'menu/categories/:category/dishes/:dish', component: DishDetailViewComponent },
   { path: 'cart', component: CartComponent },
-];
+  { path: '**', component: ErrorComponent },
+]
 
 @NgModule({
   imports: [

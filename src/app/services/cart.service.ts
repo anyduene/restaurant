@@ -12,8 +12,7 @@ export class CartService {
   dishes$ = this.dishes.asObservable();
 
   addDish(dish: Dish) {
-    const dishesInCart = this.dishes.value;
-    const dishes = dishesInCart.concat(dish);
-    this.dishes.next(dishes);
+    const dishes = this.dishes.value;
+    this.dishes.next(dishes.concat(dish));
   }
 }
