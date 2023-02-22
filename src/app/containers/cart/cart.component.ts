@@ -7,7 +7,8 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent {
-  dishes$ = this.cartService.dishes$
+  dishes$ = this.cartService.dishes$;
+  totalCost$ = this.cartService.totalCost$;
 
   constructor(private cartService: CartService) { }
 }
