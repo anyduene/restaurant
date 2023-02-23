@@ -47,12 +47,14 @@ export class CartComponent {
 
   countIncrease(dish: Dish) {
     dish.count++;
+    this.allDishesCount++;
     return dish.count;
   }
 
   countDecrease(dish: Dish) {
     if (dish.count > 1) {
       dish.count--;
+      this.allDishesCount--;
     }
     return dish.count;
   }

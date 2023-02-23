@@ -31,32 +31,3 @@
         </button>
     </div>
 </div>
-
-<!-- <div class="rounded-lg bg-white hover:shadow-2xl">
-    <a routerLink="dishes/{{ dish.link }}">
-        <div class="grid justify-items-center">
-            <img src="{{ dish.img }}" alt="{{ dish.name }}" class="rounded-t-lg">
-        </div>
-        <div class="h-1 bg-gray-300"></div>
-    </a>
-    <div class="p-4 flex flex-row">
-        <a routerLink="dishes/{{ dish.link }}">
-            <h2 class="text-2xl font-bold mb-3">{{ dish.name }}</h2>
-            <div class="flex items-center mt-3">
-                <span class="text-gray-500">Price:</span>
-                <span [class.line-through]="dish.sale" class="ml-2">
-                    {{ (dish.price / 100) | currency:'UAH':'symbol-narrow':'1.2-2' }}
-                </span>
-                <span *ngIf="dish.sale" class="ml-2 text-red-500 text-xl">
-                    {{ ((dish.price / 100) * 0.8) | currency:'UAH':'symbol-narrow':'1.2-2' }}
-                </span>
-                <span *ngIf="dish.sale" class="bg-red-500 rounded-lg ml-2 py-1 px-2 text-yellow-300">
-                    SALE
-                </span>
-            </div>
-        </a>
-        <button class="bg-teal-400 hover:bg-teal-600 rounded-lg p-2 ml-auto mb-auto" (click)="onAddToCart()">
-            <img src="../../../assets/images/cart.png" alt="cart.png" class="w-6 h-6">
-        </button>
-    </div>
-</div> -->
