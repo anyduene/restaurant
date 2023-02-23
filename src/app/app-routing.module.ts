@@ -4,7 +4,7 @@ import { CategoryViewComponent } from './containers/category-view/category-view.
 import { MainComponent } from './containers/main/main.component';
 import { MenuComponent } from './containers/menu/menu.component';
 import { DishDetailViewComponent } from './containers/dish-detail-view/dish-detail-view.component';
-import { CartComponent } from './containers/cart/cart.component';
+import { CartViewComponent } from './containers/cart-view/cart-view.component';
 import { ErrorComponent } from './shared/error/error.component';
 
 const routes: Routes = [
@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'menu/categories/:category', component: CategoryViewComponent },
   { path: 'menu/dishes/:dish', component: DishDetailViewComponent },
   { path: 'menu/categories/:category/dishes/:dish', component: DishDetailViewComponent },
-  { path: 'cart', component: CartComponent },
+  { path: 'cart', component: CartViewComponent },
   { path: '**', component: ErrorComponent },
 ]
 

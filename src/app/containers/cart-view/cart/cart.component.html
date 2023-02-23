@@ -1,0 +1,107 @@
+<div class="flex my-10 mx-20">
+    <div class="w-3/4 px-12 py-10 border-2 border-gray-300 rounded-l-xl" [class.rounded-b-xl]="allDishesCount>2">
+        <div class="flex justify-between border-b pb-8">
+            <h1 class="font-semibold text-2xl text-gray-500">Shopping Cart</h1>
+            <h1 class="font-semibold text-2xl text-gray-500">0 Dishes</h1>
+        </div>
+
+        <div class="h-96 flex" *ngIf="allDishesCount===0">
+            <span class="text-gray-500 font-semibold text-2xl m-auto">Your cart is empty :(</span>
+        </div>
+        <div *ngIf="allDishesCount>0">
+            <div class="my-10">
+                <div class="flex mx-5">
+                    <span class="w-2/5 font-semibold text-gray-600 text-xs uppercase">Product details</span>
+                    <span class="w-1/5 font-semibold text-gray-600 text-xs uppercase text-center">Quantity</span>
+                    <span class="w-1/5 font-semibold text-gray-600 text-xs uppercase text-center">Price</span>
+                    <span class="w-1/5 font-semibold text-gray-600 text-xs uppercase text-center">Total</span>
+                </div>
+
+                <div *ngFor="let dish of dishes" class="bg-gray-100 flex p-4 mt-5">
+                    <div class="flex flex-row w-2/5">
+                        <img class="w-32 bg-gray-300 rounded-xl p-2" src="{{dish.img}}" alt="{{dish.name}}.png">
+
+                        <div class="flex flex-col">
+                            <span class="font-bold text-xl text-gray-500 ml-4">{{dish.name}}</span>
+                            <button
+                                class="font-semibold text-white bg-red-500 hover:bg-red-600 ml-4 mt-auto p-2 rounded-xl">Remove</button>
+                        </div>
+                    </div>
+
+                    <div class="w-1/5 m-auto flex">
+                        <div class="flex flex-row h-10 w-32 rounded-lg relative bg-transparent mt-1 m-auto">
+                            <button (click)="countDecrease(dish)"
+                                class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                                <span class="m-auto text-2xl font-thin">−</span>
+                            </button>
+                            <input type="number"
+                                class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700"
+                                id="count" value={{dish.count}}>
+                            <button (click)="countIncrease(dish)"
+                                class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                                <span class="m-auto text-2xl font-thin">+</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="w-1/5 flex justify-center">
+                        <span [class.line-through]="dish.sale" class="my-auto font-semibold text-sm text-gray-500 mr-2">
+                            {{ (dish.price / 100) | currency:'UAH':'symbol-narrow':'1.2-2' }}
+                        </span>
+                        <span *ngIf="dish.sale" class="text-red-500 text-xl my-auto">
+                            {{ ((dish.price / 100) * 0.8) | currency:'UAH':'symbol-narrow':'1.2-2' }}
+                        </span>
+                    </div>
+
+                    <div class="w-1/5 flex">
+                        <span class="font-semibold text-sm text-gray-500 m-auto" *ngIf="dish.sale!=true">
+                            {{ (dish.price / 100 * dish.count) | currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
+                        <span class="font-semibold text-sm text-gray-500 m-auto" *ngIf="dish.sale">
+                            {{ (dish.price / 100* 0.8 * dish.count) | currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button routerLink="/menu" class="font-semibold text-teal-500 text-sm mt-auto ml-auto">
+            <span class=" text-teal-500 hover:text-teal-600"><-- Continue Shopping</span>
+        </button>
+    </div>
+
+    <div class="w-1/4 px-8 py-10 border-y-2 border-r-2 border-gray-300 rounded-r-xl h-fit">
+        <h1 class="font-semibold text-2xl border-b pb-8 text-gray-500">Order Summary</h1>
+        <div class="flex justify-between mt-10 mb-5">
+            <span class="font-semibold text-sm uppercase text-gray-500">{{allDishesCount}} Dishes</span>
+            <span class="font-semibold text-sm text-gray-500">{{(totalCost$ | async)! / 100 |
+                currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
+        </div>
+        <div class="mb-2">
+            <label class="font-medium inline-block mb-3 text-sm uppercase text-gray-500">Cooking time</label>
+            <br>
+            <mat-radio-group [(ngModel)]="cookingTime">
+                <mat-radio-button [value]="standart" class="mr-5">Standart</mat-radio-button>
+                <mat-radio-button [value]="fast">Fast (+100₴)</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="py-2">
+            <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase text-gray-500">Promo
+                Code</label>
+            <input type="text" id="promo" placeholder="Enter your code" class="p-2 text-sm w-full">
+        </div>
+        <button
+            class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercaser rounded-md mt-2">Apply</button>
+        <div class="border-t mt-8">
+            <div class="flex font-semibold justify-between py-6 text-sm uppercase">
+                <span class="text-gray-500">Total cost</span>
+                <span class="text-gray-500" *ngIf="cookingTime === standart">{{(totalCost$ | async)! / 100 |
+                    currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
+
+                <span class="text-gray-500" *ngIf="cookingTime === fast">{{(totalCost$ | async)! / 100 + fast |
+                    currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
+            </div>
+            <button *ngIf="allDishesCount>0"
+                class="bg-teal-400 font-semibold hover:bg-teal-600 py-3 text-sm text-white uppercase w-full rounded-md">Checkout</button>
+            <button *ngIf="allDishesCount===0"
+                class="bg-gray-300 font-semibold py-3 text-sm text-white uppercase w-full rounded-md">Checkout</button>
+        </div>
+    </div>
+</div>
