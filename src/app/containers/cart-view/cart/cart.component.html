@@ -72,7 +72,7 @@
         <h1 class="font-semibold text-2xl border-b pb-8 text-gray-500">Order Summary</h1>
         <div class="flex justify-between mt-10 mb-5">
             <span class="font-semibold text-sm uppercase text-gray-500">{{allDishesCount}} Dishes</span>
-            <span class="font-semibold text-sm text-gray-500">{{(totalCost)! / 100 |
+            <span class="font-semibold text-sm text-gray-500">{{(totalCost$ | async)! / 100 |
                 currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
         </div>
         <div class="mb-2">
@@ -93,10 +93,10 @@
         <div class="border-t mt-8">
             <div class="flex font-semibold justify-between py-6 text-sm uppercase">
                 <span class="text-gray-500">Total cost</span>
-                <span class="text-gray-500" *ngIf="cookingTime === standart">{{(totalCost)! / 100 |
+                <span class="text-gray-500" *ngIf="cookingTime === standart">{{(totalCost$ | async)! / 100 |
                     currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
 
-                <span class="text-gray-500" *ngIf="cookingTime === fast">{{(totalCost)! / 100 + fast |
+                <span class="text-gray-500" *ngIf="cookingTime === fast">{{(totalCost$ | async)! / 100 + fast |
                     currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
             </div>
             <button *ngIf="allDishesCount>0"
