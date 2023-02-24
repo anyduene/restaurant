@@ -1,1 +1,2 @@
-<app-cart></app-cart>
+<app-cart [cartItems]="(cartItems$ | async)!" [totalCost]="(totalCost$ | async)!" [totalCount]="(totalCount$ | async)!"
+    (increaseCount)="increaseCount($event)" (decreaseCount)="decreaseCount($event)"></app-cart>

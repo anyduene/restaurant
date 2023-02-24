@@ -35,6 +35,6 @@ export class CategoryViewComponent {
   }
 
   onAddToCart(dish: Dish) {
-    this.cartService.addDish(dish);
+    this.cartService.addDish(dish.link);
   }
 }

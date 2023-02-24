@@ -2,8 +2,6 @@
     <h2 class="mb-12 text-3xl text-center">{{ pageTitle }}</h2>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-        <div *ngFor="let dish of dishes">
-            <app-foodblock [dish]="dish" (addToCart)="onAddToCart($event)"></app-foodblock>
-        </div>
+        <app-foodblock *ngFor="let dish of dishes" [dish]="dish" (addToCart)="onAddToCart($event)"></app-foodblock>
     </div>
 </div>

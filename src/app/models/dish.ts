@@ -7,5 +7,4 @@ export interface Dish {
     sale: boolean;
     mostPopular: boolean;
     description: string;
-    count: number;
 }

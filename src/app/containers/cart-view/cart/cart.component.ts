@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
-import { CartService } from 'src/app/services/cart.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CartItem } from 'src/app/models/cart-item';
 import { Dish } from 'src/app/models/dish';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
@@ -9,53 +8,34 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent {
-  dishes$ = this.cartService.dishes$;
-  totalCost$ = this.cartService.totalCost$;
+  @Input() cartItems: CartItem[] = [];
+  @Input() totalCount!: number;
+  @Input() totalCost!: number;
 
-  dishes: Dish[] = [];
+  @Output() increaseCount = new EventEmitter<string>();
+  @Output() decreaseCount = new EventEmitter<string>();
+  @Output() removeDish = new EventEmitter<string>();
 
-  allDishesCount: number = 0;
+  cookingTimeOptions = [
+    { name: 'Standard', value: 0 },
+    { name: 'Fast (+100₴)', value: 10000 },
+  ];
 
-  timeForm!: FormGroup;
-  standart: number = 0;
-  fast: number = 100;
-  cookingTime: number = this.standart
+  cookingTime: number = this.cookingTimeOptions[0].value;
 
-  constructor(private cartService: CartService, private formBuilder: FormBuilder) { }
-
-  ngOnInit() {
-    this.cartService.dishes$.subscribe(dishes => {
-      const dishMap = new Map<string, Dish>();
-      dishes.forEach((dish) => {
-        if (dishMap.has(dish.name)) {
-          const existingDish = dishMap.get(dish.name)!;
-          existingDish.count++;
-          this.allDishesCount++;
-        } else {
-          dishMap.set(dish.name, { ...dish, count: 1 });
-          this.allDishesCount++;
-        }
-      });
-
-      this.dishes = Array.from(dishMap.values());
-    });
-
-    this.timeForm = this.formBuilder.group({
-      cookingTime: ['standart']
-    });
+  get totalAmount() {
+    return this.totalCost + this.cookingTime;
   }
 
-  countIncrease(dish: Dish) {
-    dish.count++;
-    this.allDishesCount++;
-    return dish.count;
+  onIncrease(link: string) {
+    this.increaseCount.emit(link);
   }
 
-  countDecrease(dish: Dish) {
-    if (dish.count > 1) {
-      dish.count--;
-      this.allDishesCount--;
-    }
-    return dish.count;
+  onDecrease(link: string) {
+    this.decreaseCount.emit(link);
+  }
+
+  onRemove(link: string) {
+    this.removeDish.emit(link);
   }
 }

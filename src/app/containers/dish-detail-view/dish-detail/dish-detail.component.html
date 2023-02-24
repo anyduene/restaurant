@@ -1,9 +1,9 @@
-<div class="flex my-6 mx-4">
-    <div class="bg-gray-200 rounded-xl mx-4 w-8/12 grid justify-items-center">
+<div class="flex my-6 mx-4 flex-col sm:flex-row gap-4">
+    <div class="bg-gray-200 rounded-xl sm:mx-4 sm:w-8/12 grid justify-items-center">
         <img src="{{dish.img}}" alt="{{dish.name}}">
     </div>
 
-    <div class="bg-gray-200 rounded-xl w-full  p-4 flex-col">
+    <div class="bg-gray-200 rounded-xl w-full p-4 flex-col">
         <h1 class="text-3xl mb-4 text-center">{{dish.name}}</h1>
         <p *ngIf="dish.categoryId!=4" class="text-left text-2xl text-gray-800">Ingridients: <span
                 class="text-gray-600 ml-1">{{dish.description}}</span></p>

@@ -1,7 +1,7 @@
 <div class="mb-6 mx-4 px-6 pt-10 pb-8 bg-gray-200 rounded-xl">
     <h2 class="mb-12 text-3xl text-center">Categories</h2>
 
-    <div class="grid grid-cols-4 gap-3">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <div class="rounded-xl" *ngFor="let category of categories">
             <a routerLink="categories/{{category.link}}">
                 <div class="p-6 bg-white rounded-b-xl border-2 hover:bg-gray-100 hover:border-gray-400">

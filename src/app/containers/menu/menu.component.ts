@@ -21,6 +21,6 @@ export class MenuComponent {
   }
 
   onAddToCart(dish: Dish) {
-    this.cartService.addDish(dish);
+    this.cartService.addDish(dish.link);
   }
 }
