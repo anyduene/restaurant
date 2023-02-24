@@ -1,2 +1,3 @@
 <app-cart [cartItems]="(cartItems$ | async)!" [totalCost]="(totalCost$ | async)!" [totalCount]="(totalCount$ | async)!"
-    (increaseCount)="increaseCount($event)" (decreaseCount)="decreaseCount($event)"></app-cart>
+    (increaseCount)="increaseCount($event)" (removeDish)="removeDish($event)"
+    (decreaseCount)="decreaseCount($event)"></app-cart>
