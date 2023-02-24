@@ -102,11 +102,11 @@
                     {{totalAmount / 100 | currency:'UAH':'symbol-narrow':'1.2-2' }}
                 </span>
             </div>
-            <button
-                class="bg-teal-400 font-semibold hover:bg-teal-600 py-3 text-sm text-white uppercase w-full rounded-md"
-                [disabled]="totalCount === 0">Checkout</button>
-            <!-- <button *ngIf="totalCount === 0"
-                class="bg-gray-300 font-semibold py-3 text-sm text-white uppercase w-full rounded-md">Checkout</button> -->
+            <button class="bg-gray-300 font-semibold py-3 text-sm text-white uppercase w-full rounded-md"
+                (click)="onCheckout()" [disabled]="totalCount === 0"
+                [ngClass]="{'bg-teal-400 hover:bg-teal-600': totalCount > 0}">
+                Checkout
+            </button>
         </div>
     </div>
 </div>

@@ -6,12 +6,15 @@ import { Dish } from 'src/app/models/dish';
   templateUrl: './foodblock.component.html',
   styleUrls: ['./foodblock.component.scss']
 })
+
 export class FoodblockComponent {
   @Input() dish!: Dish;
-  @Input() foundDish?: Dish;
   @Output() addToCart = new EventEmitter<Dish>();
+  added: boolean = false;
 
   onAddToCart() {
     this.addToCart.emit(this.dish);
+    this.added = true;
   }
+
 }

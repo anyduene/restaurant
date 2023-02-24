@@ -21,6 +21,8 @@ export class CartComponent {
     { name: 'Fast (+100₴)', value: 10000 },
   ];
 
+  itemsCheckout: CartItem[] = [];
+
   cookingTime: number = this.cookingTimeOptions[0].value;
 
   get totalAmount() {
@@ -37,5 +39,9 @@ export class CartComponent {
 
   onRemove(link: string) {
     this.removeDish.emit(link);
+  }
+
+  onCheckout() {
+    this.itemsCheckout = this.cartItems;
   }
 }

@@ -22,6 +22,7 @@ import { CartComponent } from './containers/cart-view/cart/cart.component';
 import { ErrorComponent } from './shared/error/error.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { CartViewComponent } from './containers/cart-view/cart-view.component';
+import { matSnackBarAnimations, MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { CartViewComponent } from './containers/cart-view/cart-view.component';
     ReactiveFormsModule,
     FormsModule,
     MatRadioModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
