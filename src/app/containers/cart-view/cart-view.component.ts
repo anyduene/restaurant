@@ -11,6 +11,7 @@ export class CartViewComponent {
   cartItems$ = this.cartService.cartItems$;
   totalCount$ = this.cartService.totalCount$;
   totalCost$ = this.cartService.totalCost$;
+  totalDiscount$ = this.cartService.totalDiscount$;
 
   constructor(public readonly cartService: CartService) {
   }

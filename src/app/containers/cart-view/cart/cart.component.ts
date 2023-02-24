@@ -11,6 +11,7 @@ export class CartComponent {
   @Input() cartItems: CartItem[] = [];
   @Input() totalCount!: number;
   @Input() totalCost!: number;
+  @Input() totalDiscount!: number;
 
   @Output() increaseCount = new EventEmitter<string>();
   @Output() decreaseCount = new EventEmitter<string>();
@@ -22,6 +23,7 @@ export class CartComponent {
   ];
 
   itemsCheckout: CartItem[] = [];
+  show: boolean = false;
 
   cookingTime: number = this.cookingTimeOptions[0].value;
 
@@ -43,5 +45,13 @@ export class CartComponent {
 
   onCheckout() {
     this.itemsCheckout = this.cartItems;
+  }
+
+  showForm() {
+    this.show = true;
+  }
+
+  closeForm() {
+    this.show = false;
   }
 }

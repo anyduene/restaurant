@@ -35,6 +35,10 @@ export class CartService {
     map(dishes => dishes.reduce((acc, dish) => acc + dish.totalCost, 0))
   );
 
+  totalDiscount$ = this.cartItems$.pipe(
+    map(dishes => dishes.reduce((acc, dish) => acc + dish.dish.price, 0))
+  );
+
   constructor(private menuService: MenuService) { }
 
   private getDishCounts() {
