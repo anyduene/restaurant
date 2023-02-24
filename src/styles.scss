@@ -28,3 +28,10 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
+
+.mat-mdc-snack-bar-container {
+    &.blue-snackbar {
+        --mdc-snackbar-container-color: #82CD47;
+        --mat-mdc-snack-bar-button-color: #fff --mdc-snackbar-supporting-text-color: #fff;
+    }
+}

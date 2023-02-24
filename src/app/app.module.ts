@@ -23,6 +23,7 @@ import { ErrorComponent } from './shared/error/error.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { CartViewComponent } from './containers/cart-view/cart-view.component';
 import { matSnackBarAnimations, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @NgModule({
