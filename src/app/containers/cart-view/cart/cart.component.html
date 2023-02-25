@@ -3,7 +3,8 @@
         [class.rounded-b-xl]="cartItems.length > 2">
         <div class="flex justify-between border-b pb-8">
             <h1 class="font-semibold text-2xl text-gray-500">Shopping Cart</h1>
-            <h1 class="font-semibold text-2xl text-gray-500">{{ totalCount }} Dish{{ totalCount > 1 ? 'es' : '' }}</h1>
+            <h1 class="font-semibold text-2xl text-gray-500">{{ totalCount }} Dish{{ totalCount > 1 || totalCount === 0
+                ? 'es' : '' }}</h1>
         </div>
 
         <div class="h-96 flex" *ngIf="totalCount === 0">
@@ -73,10 +74,10 @@
         <h1 class="font-semibold text-2xl border-b pb-8 text-gray-500">Order Summary</h1>
         <div class="flex justify-between mt-10 mb-5">
             <span class="font-semibold text-sm uppercase text-gray-500">
-                {{ totalCount }} Dish{{totalCount > 1 ? 'es' : ''}}
+                {{ totalCount }} Dish{{totalCount > 1 || totalCount === 0 ? 'es' : ''}}
             </span>
             <span class="font-semibold text-sm text-gray-500">
-                {{ (totalCost / 100) | currency:'UAH':'symbol-narrow':'1.2-2' }}
+                {{ (totalAmount / 100) | currency:'UAH':'symbol-narrow':'1.2-2' }}
             </span>
         </div>
         <div class="mb-2">
@@ -91,18 +92,24 @@
         <div class="py-2">
             <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase text-gray-500">Promo
                 Code</label>
-            <input type="text" id="promo" placeholder="Enter your code" class="p-2 text-sm w-full">
+            <input type="text" id="promo" placeholder="Enter your code" class="p-2 text-sm w-full" [(ngModel)]="promo">
         </div>
-        <button
-            class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercaser rounded-md mt-2">Apply</button>
+        <button class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercaser rounded-md mt-2"
+            (click)="applyPromoCode()">Apply</button>
         <div class="border-t mt-8">
-            <div class="flex font-semibold justify-between py-6 text-sm uppercase">
+            <div class="flex font-semibold justify-between py-6 text-sm uppercase h-10">
                 <span class="text-gray-500">Total cost</span>
-                <span class="text-gray-500">
-                    {{totalAmount / 100 | currency:'UAH':'symbol-narrow':'1.2-2' }}
+                <span class="text-gray-500 text-lg" *ngIf="discount === 1">
+                    {{ totalAmount / 100 | currency:'UAH':'symbol-narrow':'1.2-2' }}
                 </span>
+                <div *ngIf="discount != 1">
+                    <span class="text-red-500 text-xl mr-1">
+                        {{(totalAmount * discount) / 100 | currency:'UAH':'symbol-narrow':'1.2-2' }}
+                    </span>
+                    <span class="text-red-500 text-xl">(-{{(1-discount) * 100}}%)</span>
+                </div>
             </div>
-            <button class="bg-gray-300 font-semibold py-3 text-sm text-white uppercase w-full rounded-md"
+            <button class="bg-gray-300 font-semibold py-3 text-sm text-white uppercase w-full rounded-md mt-3"
                 (click)="onCheckout()" [disabled]="totalCount === 0" (click)="showForm()"
                 [ngClass]="{'bg-teal-400 hover:bg-teal-600': totalCount > 0}">
                 Checkout
@@ -113,7 +120,7 @@
             <div class="fixed z-10 inset-0 overflow-y-auto" *ngIf="show">
                 <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                     <div class="fixed inset-0 transition-opacity">
-                        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                        <div class="absolute inset-0 bg-gray-500 opacity-75" (click)="closeForm()"></div>
                     </div>
 
                     <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>&#8203;
@@ -121,68 +128,90 @@
                     <div
                         class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                         <div>
-                            <button (click)="closeForm()" class="">X</button>
+                            <button (click)="closeForm()" class="hover:text-red-500">X</button>
                             <form>
                                 <div class="leading-loose">
                                     <form class="max-w-xl p-2 bg-white rounded">
                                         <h1 class="text-center text-xl font-semibold">Checkout</h1>
                                         <p class="text-gray-800 font-semibold">Customer information</p>
                                         <div class="inline-block mt-2 w-1/2 pr-1">
-                                            <label class="text-gray-600" for="cus_email">Name</label>
+                                            <label class="text-gray-600">Name</label>
                                             <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                                                id="cus_email" name="cus_email" type="text" required=""
-                                                placeholder="Name" aria-label="Email">
+                                                id="cus_email" name="cus_email" type="text" required placeholder="Name"
+                                                aria-label="Name">
                                         </div>
                                         <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                                            <label class="text-gray-600" for="cus_email">Phone number</label>
-                                            <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                                                id="cus_email" name="cus_email" type="text" required=""
-                                                placeholder="Phone number" aria-label="Email">
+                                            <label class="text-gray-600">Surname</label>
+                                            <input type="number"
+                                                class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" required
+                                                placeholder="Surname" maxlength="10">
                                         </div>
                                         <div class="mt-2">
-                                            <label class="block text-gray-600" for="cus_email">Email</label>
-                                            <input class="w-full px-5  py-1 text-gray-700 bg-gray-200 rounded"
-                                                id="cus_email" name="cus_email" type="text" required=""
-                                                placeholder="Your Email" aria-label="Email">
+                                            <label class="block text-gray-600">Phone number</label>
+                                            <input class="w-full px-2  py-2 text-gray-700 bg-gray-200 rounded"
+                                                type="text" required placeholder="123-456-78-90" maxlength="10">
                                         </div>
                                         <div class="mt-2">
-                                            <label class=" block text-gray-600" for="cus_email">Address</label>
-                                            <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                                                id="cus_email" name="cus_email" type="text" required=""
-                                                placeholder="Street" aria-label="Email">
+                                            <label class="block text-gray-600">Email</label>
+                                            <input class="w-full px-2  py-2 text-gray-700 bg-gray-200 rounded"
+                                                type="text" required placeholder="name@gmail.com">
                                         </div>
                                         <div class="mt-2">
-                                            <label class="hidden text-gray-600" for="cus_email">City</label>
+                                            <label class="block text-gray-600">Address</label>
                                             <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                                                id="cus_email" name="cus_email" type="text" required=""
-                                                placeholder="City" aria-label="Email">
-                                        </div>
-                                        <div class="mt-2">
-                                            <label class="hidden text-gray-600" for="cus_email">Country</label>
-                                            <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                                                id="cus_email" name="cus_email" type="text" required=""
-                                                placeholder="Country" aria-label="Email">
+                                                type="text" required placeholder="Adress">
                                         </div>
                                         <p class="mt-4 text-gray-800 font-semibold">Payment information</p>
                                         <div class="">
-                                            <label class="block text-gray-600" for="cus_name">Card</label>
+                                            <label class="block text-gray-600" for="cus_name">Card number</label>
                                             <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                                                id="cus_name" name="cus_name" type="text" required=""
-                                                placeholder="xxxx xxxx xxxx xxxx" aria-label="Name">
+                                                type="number" required placeholder="xxxx xxxx xxxx xxxx">
                                         </div>
                                         <div class="h-1 bg-gray-300 mt-4"></div>
                                         <div class="mt-4">
-                                            <span class="text-gray-600 text-lg mr-4">Total: {{ (totalAmount / 100) |
-                                                currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
-                                            <span class="text-gray-600 text-lg">Discount: </span><span
-                                                class="text-red-400 text-lg">{{ ((totalAmount -
-                                                totalDiscount) / 100) |
-                                                currency:'UAH':'symbol-narrow':'1.2-2' }}</span>
-                                            <br>
+                                            <div class="w-full">
+                                                <div *ngIf="discount != 1" class="grid grid-cols-2 grid-rows-1">
+                                                    <div>
+                                                        <span class="text-gray-600 text-lg mr-2">Total: </span>
+                                                        <span class="text-red-500 text-xl mr-1">
+                                                            {{(totalAmount * discount) / 100 |
+                                                            currency:'UAH':'symbol-narrow':'1.2-2' }}
+                                                        </span>
+                                                        <span class="text-red-500 text-xl mr-auto">(-{{(1-discount) *
+                                                            100}}%)
+                                                        </span>
+                                                    </div>
+
+                                                    <div><span class="text-gray-600 text-lg">Discount: </span><span
+                                                            class="text-red-400 text-lg">{{ ((totalDiscount - totalCost)
+                                                            /
+                                                            100) |
+                                                            currency:'UAH':'symbol-narrow':'1.2-2'}}
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <div *ngIf="discount === 1" class="grid grid-cols-2 grid-rows-1">
+                                                    <div>
+                                                        <span class="text-gray-600 text-lg mr-28">Total: {{
+                                                            ((totalAmount *
+                                                            discount) / 100) | currency:'UAH':'symbol-narrow':'1.2-2' }}
+                                                        </span>
+                                                    </div>
+
+                                                    <div>
+                                                        <span class="text-gray-600 text-lg">Discount: </span><span
+                                                            class="text-red-400 text-lg">{{ ((totalDiscount - totalCost)
+                                                            /
+                                                            100) |
+                                                            currency:'UAH':'symbol-narrow':'1.2-2'}}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <button
-                                                class="px-4 py-1 mt-3 text-white font-light tracking-wider bg-gray-900 rounded"
-                                                type="submit">Pay | {{ (totalCost / 100) |
-                                                currency:'UAH':'symbol-narrow':'1.2-2' }}</button>
+                                                class="px-4 py-1 mt-3 w-full text-white text-lg font-semibold texy-canter tracking-wider bg-teal-400 hover:bg-teal-600 rounded-md"
+                                                type="submit">Order</button>
                                         </div>
                                     </form>
                                 </div>
