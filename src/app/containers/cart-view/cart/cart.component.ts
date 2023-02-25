@@ -23,18 +23,17 @@ export class CartComponent {
     { name: 'Standard', value: 0 },
     { name: 'Fast (+100₴)', value: 10000 },
   ];
+  cookingTime: number = this.cookingTimeOptions[0].value;
+
+  get totalAmount() {
+    return this.totalCost + this.cookingTime;
+  }
 
   itemsCheckout: CartItem[] = [];
   show: boolean = false;
 
   promo: string = '';
   discount: number = 1;
-
-  cookingTime: number = this.cookingTimeOptions[0].value;
-
-  get totalAmount() {
-    return this.totalCost + this.cookingTime;
-  }
 
   onIncrease(link: string) {
     this.increaseCount.emit(link);

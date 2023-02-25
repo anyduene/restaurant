@@ -11,11 +11,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class FoodblockComponent {
   @Input() dish!: Dish;
   @Output() addToCart = new EventEmitter<Dish>();
-  added: boolean = false;
 
   onAddToCart() {
     this.addToCart.emit(this.dish);
-    this.added = true;
   }
 
   constructor(private _snackBar: MatSnackBar) { }

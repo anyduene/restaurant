@@ -1,19 +1,45 @@
-<div class="flex my-6 mx-4 flex-col sm:flex-row gap-4">
+<div class="flex my-6 mx-4 sm:flex-row gap-1">
     <div class="bg-gray-200 rounded-xl sm:mx-4 sm:w-8/12 grid justify-items-center">
         <img src="{{dish.img}}" alt="{{dish.name}}">
     </div>
 
-    <div class="bg-gray-200 rounded-xl w-full p-4 flex-col">
+    <div class="bg-gray-200 rounded-xl w-full p-4 h-fit">
         <h1 class="text-3xl mb-4 text-center">{{dish.name}}</h1>
-        <p *ngIf="dish.categoryId!=4" class="text-left text-2xl text-gray-800">Ingridients: <span
-                class="text-gray-600 ml-1">{{dish.description}}</span></p>
-        <p *ngIf="dish.categoryId==4" class="text-left text-2xl text-gray-800">Just a {{dish.name}}</p>
-        <mat-form-field appearance="fill" *ngIf="dish.categoryId==1" class="mt-5">
-            <mat-label>Diameter</mat-label>
-            <mat-select [formControl]="diameter">
-                <mat-option [value]="25">25cm</mat-option>
-                <mat-option [value]="35">35cm</mat-option>
-            </mat-select>
-        </mat-form-field>
+
+
+
+        <div class="p-2 rounded-xl w-fit bg-gray-300">
+            <p *ngIf="dish.categoryId!=4" class="text-left text-2xl text-gray-800">Ingridients: <span
+                    class="text-gray-600 ml-1">{{dish.description}}</span></p>
+            <p *ngIf="dish.categoryId === 4" class="text-left text-2xl text-gray-800">Description: <span
+                    class="text-gray-600 ml-1">Just a {{dish.name}}</span></p>
+
+            <div *ngIf="dish.categoryId != 4" class="mt-4 flex flex-row">
+                <span class="text-2xl text-gray-800 my-auto">Choose diameter:</span>
+                <mat-radio-group [(ngModel)]="diameter">
+                    <mat-radio-button *ngFor="let option of diameters" [value]="option.value" class="mr-5">
+                        <span class="text-xl text-gray-800">{{ option.diameter }}</span>
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+
+        <div class="p-2 rounded-xl w-fit bg-gray-300 mt-5">
+            <p class="text-left text-2xl text-gray-800 mb-2">Category: <span
+                    class="text-gray-600 ml-1">{{dish.categoryName}}</span></p>
+
+            <p class="text-left text-2xl text-gray-800" *ngIf="dish.categoryId != 4">Weight: <span
+                    class="text-gray-600 ml-1">{{dish.weight}}</span>
+            </p>
+            <p class="text-left text-2xl text-gray-800" *ngIf="dish.categoryId === 4">Volume: <span
+                    class="text-gray-600 ml-1">{{dish.weight}}</span>
+            </p>
+        </div>
+
+        <button class="bg-teal-400 hover:bg-teal-600 rounded-xl p-2 mt-5 flex flex-row" (click)="onAddToCart()"
+            (click)="openSnackBar()">
+            <span class="my-auto mr-3 text-2xl text-gray-800">Add to cart</span>
+            <img src="../../../assets/images/cart.png" alt="cart.png">
+        </button>
     </div>
 </div>

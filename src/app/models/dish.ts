@@ -7,4 +7,6 @@ export interface Dish {
     sale: boolean;
     mostPopular: boolean;
     description: string;
+    categoryName: string;
+    weight: string;
 }

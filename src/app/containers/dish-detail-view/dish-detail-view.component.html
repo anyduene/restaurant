@@ -1,4 +1,5 @@
-<app-dish-detail *ngIf="dish$ | async as dish; else notFound" [dish]="dish"></app-dish-detail>
+<app-dish-detail *ngIf="dish$ | async as dish; else notFound" [dish]="dish"
+    (addToCart)="onAddToCart($event)"></app-dish-detail>
 <ng-template #notFound>
     <app-error></app-error>
 </ng-template>
