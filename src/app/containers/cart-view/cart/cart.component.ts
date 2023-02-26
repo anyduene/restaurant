@@ -3,6 +3,7 @@ import { CartItem } from 'src/app/models/cart-item';
 import { Dish } from 'src/app/models/dish';
 import { Promo } from 'src/app/models/promo';
 import { PromoCodes } from 'src/app/services/promo-codes';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cart',
@@ -35,12 +36,16 @@ export class CartComponent {
   promo: string = '';
   discount: number = 1;
 
+  constructor(private _snackBar: MatSnackBar) { }
+
   onIncrease(link: string) {
     this.increaseCount.emit(link);
+    console.log(this.totalDiscount)
   }
 
   onDecrease(link: string) {
     this.decreaseCount.emit(link);
+    console.log(this.totalDiscount)
   }
 
   onRemove(link: string) {
@@ -61,11 +66,27 @@ export class CartComponent {
 
   applyPromoCode() {
     this.discount = this.searchPromoCode(this.promo);
+    console.log(this.discount)
   }
 
   searchPromoCode(inputText: string): number {
     const promo = PromoCodes.find(p => p.promo === inputText);
-    return promo ? promo.discount : 1;
+    if(promo) {
+      return promo.discount;
+    } else {
+      this._snackBar.openFromComponent(PizzaPartyComponent, {
+        duration: 1500,
+        panelClass: ['red-snackbar'],
+      });
+      return 1;
+    }
   }
 }
+
+@Component({
+  selector: 'snack-bar-component-example-snack',
+  templateUrl: 'snack-bar.html',
+  styles: [],
+})
+export class PizzaPartyComponent { }
 

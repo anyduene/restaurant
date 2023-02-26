@@ -34,6 +34,10 @@ input[type=number] {
         --mdc-snackbar-container-color: #82CD47;
         --mat-mdc-snack-bar-button-color: #fff --mdc-snackbar-supporting-text-color: #fff;
     }
+    &.red-snackbar {
+        --mdc-snackbar-container-color: #ff0000;
+        --mat-mdc-snack-bar-button-color: #fff --mdc-snackbar-supporting-text-color: #fff;
+    }
 }
 
 /* modal.component.css */

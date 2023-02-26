@@ -22,7 +22,8 @@ export class CartService {
           const count = dishCounts.get(dish.link);
           const discount = dish.sale ? 0.8 : 1;
           const totalCost = dish.price * discount * count;
-          return { count, totalCost, dish };
+          const dishPrice = dish.price * count;
+          return { count, totalCost, dish, dishPrice };
         });
     })
   );
@@ -36,7 +37,7 @@ export class CartService {
   );
 
   totalDiscount$ = this.cartItems$.pipe(
-    map(dishes => dishes.reduce((acc, dish) => acc + dish.dish.price, 0))
+    map(dishes => dishes.reduce((acc, dish) => acc + dish.dishPrice, 0))
   );
 
   constructor(private menuService: MenuService) { }

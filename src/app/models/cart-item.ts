@@ -4,4 +4,5 @@ export interface CartItem {
     count: number;
     totalCost: number;
     dish: Dish;
+    dishPrice : number;
 }
