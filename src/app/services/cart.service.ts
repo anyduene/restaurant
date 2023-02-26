@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CartItem } from '../models/cart-item';
-import { Dish } from '../models/dish';
 import { MenuService } from './menu.service';
 
 @Injectable({
@@ -10,6 +10,9 @@ import { MenuService } from './menu.service';
 })
 export class CartService {
   private dishCounts = new BehaviorSubject(new Map());
+
+  private orderCreationInProgress = new BehaviorSubject(false);
+  orderCreationInProgress$ = this.orderCreationInProgress.asObservable();
 
   cartItems$: Observable<CartItem[]> = combineLatest([
     this.menuService.dishes$,
@@ -40,7 +43,10 @@ export class CartService {
     map(dishes => dishes.reduce((acc, dish) => acc + dish.dishPrice, 0))
   );
 
-  constructor(private menuService: MenuService) { }
+  constructor(
+    private readonly menuService: MenuService,
+    private readonly snackBar: MatSnackBar,
+  ) { }
 
   private getDishCounts() {
     return new Map(this.dishCounts.value);
@@ -70,5 +76,22 @@ export class CartService {
     const dishCounts = this.getDishCounts();
     dishCounts.delete(link);
     this.dishCounts.next(dishCounts);
+  }
+
+  createOrder() {
+    this.orderCreationInProgress.next(true);
+
+    setTimeout(() => {
+      this.dishCounts.next(new Map());
+      this.orderCreationInProgress.next(false);
+      this.showSuccess('Order successfully created!!!');
+    }, 2000);
+  }
+
+  private showSuccess(message: string) {
+    this.snackBar.open(message, undefined, {
+      duration: 3000,
+      panelClass: ['blue-snackbar']
+    });
   }
 }

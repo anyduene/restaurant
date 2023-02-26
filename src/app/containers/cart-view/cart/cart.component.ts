@@ -19,6 +19,10 @@ export class CartComponent {
   @Output() increaseCount = new EventEmitter<string>();
   @Output() decreaseCount = new EventEmitter<string>();
   @Output() removeDish = new EventEmitter<string>();
+  @Output() createOrder = new EventEmitter();
+  @Output() promoNotFound = new EventEmitter();
+
+  constructor(private _snackBar: MatSnackBar) { }
 
   cookingTimeOptions = [
     { name: 'Standard', value: 0 },
@@ -35,8 +39,6 @@ export class CartComponent {
 
   promo: string = '';
   discount: number = 1;
-
-  constructor(private _snackBar: MatSnackBar) { }
 
   onIncrease(link: string) {
     this.increaseCount.emit(link);
@@ -64,29 +66,17 @@ export class CartComponent {
     this.show = false;
   }
 
-  applyPromoCode() {
-    this.discount = this.searchPromoCode(this.promo);
-    console.log(this.discount)
+  order() {
+    this.createOrder.emit();
   }
 
-  searchPromoCode(inputText: string): number {
-    const promo = PromoCodes.find(p => p.promo === inputText);
-    if(promo) {
-      return promo.discount;
-    } else {
-      this._snackBar.openFromComponent(PizzaPartyComponent, {
-        duration: 1500,
-        panelClass: ['red-snackbar'],
-      });
-      return 1;
+  applyPromoCode() {
+    const promo = PromoCodes.find(p => p.promo === this.promo);
+
+    this.discount = promo ? promo.discount : 1;
+
+    if(!promo) {
+      this.promoNotFound.emit();
     }
   }
 }
-
-@Component({
-  selector: 'snack-bar-component-example-snack',
-  templateUrl: 'snack-bar.html',
-  styles: [],
-})
-export class PizzaPartyComponent { }
-

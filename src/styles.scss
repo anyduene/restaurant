@@ -32,11 +32,13 @@ input[type=number] {
 .mat-mdc-snack-bar-container {
     &.blue-snackbar {
         --mdc-snackbar-container-color: #82CD47;
-        --mat-mdc-snack-bar-button-color: #fff --mdc-snackbar-supporting-text-color: #fff;
+        --mat-mdc-snack-bar-button-color: #fff; 
+        --mdc-snackbar-supporting-text-color: #fff;
     }
     &.red-snackbar {
         --mdc-snackbar-container-color: #ff0000;
-        --mat-mdc-snack-bar-button-color: #fff --mdc-snackbar-supporting-text-color: #fff;
+        --mat-mdc-snack-bar-button-color: #fff;
+        --mdc-snackbar-supporting-text-color: #fff;
     }
 }
 

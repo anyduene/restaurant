@@ -1,3 +1,9 @@
 <app-cart [cartItems]="(cartItems$ | async)!" [totalCost]="(totalCost$ | async)!" [totalCount]="(totalCount$ | async)!"
     [totalDiscount]="(totalDiscount$ | async)!" (increaseCount)="increaseCount($event)"
-    (removeDish)="removeDish($event)" (decreaseCount)="decreaseCount($event)"></app-cart>
+    (removeDish)="removeDish($event)" (decreaseCount)="decreaseCount($event)" (createOrder)="createOrder()"
+    (promoNotFound)="onPromoNotFound()"></app-cart>
+
+<div *ngIf="orderCreationInProgress$ | async"
+    class="fixed z-10 inset-0 overflow-hidden bg-gray-500 bg-opacity-50 flex justify-center items-center">
+    <mat-spinner></mat-spinner>
+</div>

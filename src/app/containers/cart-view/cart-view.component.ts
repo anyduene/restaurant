@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Dish } from 'src/app/models/dish';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -12,9 +12,12 @@ export class CartViewComponent {
   totalCount$ = this.cartService.totalCount$;
   totalCost$ = this.cartService.totalCost$;
   totalDiscount$ = this.cartService.totalDiscount$;
+  orderCreationInProgress$ = this.cartService.orderCreationInProgress$;
 
-  constructor(public readonly cartService: CartService) {
-  }
+  constructor(
+    private readonly cartService: CartService,
+    private readonly snackBar: MatSnackBar,
+  ) {}
 
   increaseCount(link: string) {
     this.cartService.addDish(link);
@@ -26,5 +29,16 @@ export class CartViewComponent {
 
   removeDish(link: string) {
     this.cartService.removeDish(link);
+  }
+
+  createOrder() {
+    this.cartService.createOrder();
+  }
+
+  onPromoNotFound() {
+    this.snackBar.open('Invalid Promo code :(', undefined, {
+      duration: 1500,
+      panelClass: ['red-snackbar']
+    });
   }
 }

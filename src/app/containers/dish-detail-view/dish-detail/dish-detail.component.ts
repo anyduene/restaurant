@@ -11,12 +11,6 @@ export class DishDetailComponent {
   @Input() dish!: Dish;
   @Output() addToCart = new EventEmitter<Dish>();
 
-  diameters = [
-    { diameter: '25cm', value: 0 },
-    { diameter: '35cm (+100₴)', value: 10000 },
-  ];
-  diameter: number = this.diameters[0].value;
-
   onAddToCart() {
     this.addToCart.emit(this.dish);
   }
