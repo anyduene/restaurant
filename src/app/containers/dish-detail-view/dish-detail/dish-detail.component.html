@@ -16,9 +16,12 @@
         </div>
 
         <div class="p-2 rounded-xl w-fit bg-gray-300 mt-5">
-            <p class="text-left text-2xl text-gray-800 mb-2">Category: <span
-                    class="text-gray-600 ml-1">{{dish.categoryName}}</span></p>
-
+            <p class="text-left text-2xl text-gray-800 mb-1">Category: <span
+                    class="text-gray-600 ml-1">{{dish.categoryName}}</span>
+            </p>
+            <p class="text-left text-2xl text-gray-800 mb-1" *ngIf="dish.categoryId === 1">Diameter: <span
+                class="text-gray-600 ml-1">25cm</span>
+            </p>
             <p class="text-left text-2xl text-gray-800" *ngIf="dish.categoryId != 4">Weight: <span
                     class="text-gray-600 ml-1">{{dish.weight}}</span>
             </p>
