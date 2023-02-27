@@ -24,6 +24,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { CartViewComponent } from './containers/cart-view/cart-view.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NewsComponent } from './containers/news-view/news/news.component';
+import { NewsViewComponent } from './containers/news-view/news-view.component';
 
 
 @NgModule({
@@ -43,6 +45,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     CartComponent,
     ErrorComponent,
     CartViewComponent,
+    NewsComponent,
+    NewsViewComponent,
   ],
   imports: [
     BrowserModule,
