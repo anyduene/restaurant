@@ -26,6 +26,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NewsComponent } from './containers/news-view/news/news.component';
 import { NewsViewComponent } from './containers/news-view/news-view.component';
+import { ContactComponent } from './containers/contact/contact.component';
+import { AboutComponent } from './containers/about/about.component';
 
 
 @NgModule({
@@ -47,6 +49,8 @@ import { NewsViewComponent } from './containers/news-view/news-view.component';
     CartViewComponent,
     NewsComponent,
     NewsViewComponent,
+    ContactComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,12 +7,16 @@ import { DishDetailViewComponent } from './containers/dish-detail-view/dish-deta
 import { CartViewComponent } from './containers/cart-view/cart-view.component';
 import { ErrorComponent } from './shared/error/error.component';
 import { NewsViewComponent } from './containers/news-view/news-view.component';
+import { ContactComponent } from './containers/contact/contact.component';
+import { AboutComponent } from './containers/about/about.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
   { path: 'main', component: MainComponent },
   { path: 'menu', component: MenuComponent },
   { path: 'news', component: NewsViewComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'about', component: AboutComponent },
   { path: 'menu/categories/:category', component: CategoryViewComponent },
   { path: 'menu/dishes/:dish', component: DishDetailViewComponent },
   { path: 'menu/categories/:category/dishes/:dish', component: DishDetailViewComponent },
