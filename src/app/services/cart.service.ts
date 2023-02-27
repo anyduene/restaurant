@@ -91,7 +91,7 @@ export class CartService {
   private showSuccess(message: string) {
     this.snackBar.open(message, undefined, {
       duration: 3000,
-      panelClass: ['blue-snackbar']
+      panelClass: ['green-snackbar']
     });
   }
 }

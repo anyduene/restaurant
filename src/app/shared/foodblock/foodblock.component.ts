@@ -16,19 +16,12 @@ export class FoodblockComponent {
     this.addToCart.emit(this.dish);
   }
 
-  constructor(private _snackBar: MatSnackBar) { }
+  constructor(private snackBar: MatSnackBar) { }
 
   openSnackBar() {
-    this._snackBar.openFromComponent(PizzaPartyComponent, {
+    this.snackBar.open('Dish added to cart', undefined, {
       duration: 1500,
-      panelClass: ['blue-snackbar'],
+      panelClass: ['green-snackbar']
     });
   }
 }
-
-@Component({
-  selector: 'snack-bar-component-example-snack',
-  templateUrl: 'snack-bar.html',
-  styles: [],
-})
-export class PizzaPartyComponent { }

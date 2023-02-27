@@ -3,7 +3,7 @@ import { CartItem } from 'src/app/models/cart-item';
 import { Dish } from 'src/app/models/dish';
 import { Promo } from 'src/app/models/promo';
 import { PromoCodes } from 'src/app/services/promo-codes';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
@@ -21,8 +21,7 @@ export class CartComponent {
   @Output() removeDish = new EventEmitter<string>();
   @Output() createOrder = new EventEmitter();
   @Output() promoNotFound = new EventEmitter();
-
-  constructor(private _snackBar: MatSnackBar) { }
+  @Output() promoFound = new EventEmitter();
 
   cookingTimeOptions = [
     { name: 'Standard', value: 0 },
@@ -68,6 +67,17 @@ export class CartComponent {
 
   order() {
     this.createOrder.emit();
+    this.promo = '';
+  }
+
+  email = new FormControl('', [Validators.required, Validators.email]);
+
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
   applyPromoCode() {
@@ -77,6 +87,8 @@ export class CartComponent {
 
     if(!promo) {
       this.promoNotFound.emit();
+    } else {
+      this.promoFound.emit();
     }
   }
 }

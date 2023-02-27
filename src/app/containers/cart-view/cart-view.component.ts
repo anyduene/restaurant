@@ -41,4 +41,11 @@ export class CartViewComponent {
       panelClass: ['red-snackbar']
     });
   }
+
+  onPromoFound() {
+    this.snackBar.open('Promo code applied', undefined, {
+      duration: 1500,
+      panelClass: ['green-snackbar']
+    });
+  }
 }
