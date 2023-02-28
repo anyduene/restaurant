@@ -83,7 +83,7 @@
         <div class="mb-2">
             <label class="font-medium inline-block mb-3 text-sm uppercase text-gray-500">Cooking time</label>
             <br>
-            <mat-radio-group [(ngModel)]="cookingTime">
+            <mat-radio-group [(ngModel)]="cookingTime" [disabled]="totalCount === 0">
                 <mat-radio-button *ngFor="let option of cookingTimeOptions" [value]="option.value" class="mr-5">
                     {{ option.name }}
                 </mat-radio-button>
