@@ -1,28 +1,139 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="relative grid grid-cols-1 gap-4 p-4 mb-8 border w-3/12 rounded-lg bg-white shadow-lg">
-    <div class="relative flex gap-4">
-        <img src="https://icons.iconarchive.com/icons/diversity-avatars/avatars/256/charlie-chaplin-icon.png" class="relative rounded-lg -top-8 -mb-4 bg-white border h-20 w-20" alt="" loading="lazy">
-        <div class="flex flex-col w-full">
-            <div class="flex flex-row justify-between">
-                <p class="relative text-xl whitespace-nowrap truncate overflow-hidden">COMMENTOR</p>
-                <a class="text-gray-500 text-xl" href="#"><i class="fa-solid fa-trash"></i></a>
-            </div>
-            <p class="text-gray-400 text-sm">20 April 2022, at 14:88 PM</p>
+<div class="relative">
+    <!-- Carousel wrapper -->
+    <div class="relative h-56 overflow-hidden sm:h-64 xl:h-80 2xl:h-96">
+        <div id="carousel-item-1" class="hidden duration-700 ease-in-out">
+            <img src="../../../assets/images/about/about1.png"
+                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <div id="carousel-item-2" class="hidden duration-700 ease-in-out">
+            <img src="../../../assets/images/comments/billy.png"
+                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <div id="carousel-item-3" class="hidden duration-700 ease-in-out">
+            <img src="../../../assets/images/about/about3.png"
+                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <div id="carousel-item-4" class="hidden duration-700 ease-in-out">
+            <img src="../../../assets/images/about/about4.png"
+                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
     </div>
-    <p class="-mt-4 text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quisquam vero adipisci beatae voluptas dolor ame.</p>
+    <!-- Slider indicators -->
+    <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-1 left-1/2 bg-gray-400 p-1 rounded-lg">
+        <button id="carousel-indicator-1" type="button" class="w-3 h-3 rounded-full" aria-current="true"
+            aria-label="Slide 1"></button>
+        <button id="carousel-indicator-2" type="button" class="w-3 h-3 rounded-full" aria-current="false"
+            aria-label="Slide 2"></button>
+        <button id="carousel-indicator-3" type="button" class="w-3 h-3 rounded-full" aria-current="false"
+            aria-label="Slide 3"></button>
+        <button id="carousel-indicator-4" type="button" class="w-3 h-3 rounded-full" aria-current="false"
+            aria-label="Slide 4"></button>
+    </div>
+
+    <!-- Slider controls -->
+    <button id="data-carousel-prev" type="button"
+        class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none">
+        <span
+            class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60">
+            <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            <span class="hidden">Previous</span>
+        </span>
+    </button>
+    <button id="data-carousel-next" type="button"
+        class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none">
+        <span
+            class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60">
+            <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+            <span class="hidden">Next</span>
+        </span>
+    </button>
 </div>
+
+
+
+<section class="bg-gray-100 py-10">
+    <div class="mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <div>
+            <h2 class="text-2xl font-bold mb-10">About Us</h2>
+            <p class="text-lg mb-4 text-justify">Our menu highlights things that utilize the sound and fragrant flavors,
+                however,
+                forget the stuffing ghee, spread, oil, and overwhelming cream. ‘Pepperonis’ has developed to incorporate
+                four superb takeout areas in Toronto, with additional to come sooner rather than later. Our group takes
+                pride in the way that we can furnish our new and faithful clients with extraordinary tasting
+                Indian-roused nourishment that is not normal for that some other Indian eateries you visit. We perceive
+                that a few people are as yet searching for run-of-the-mill Indian nourishment, and that is fine with us.
+                Our disclaimer is that on the off chance that you’re anticipating overwhelming, slick, undesirable
+                Indian nourishment, ‘Pepperonis’ isn’t the place for you.
+        </div>
+        <div>
+            <img src="../../../assets/images/about/about4.png" alt="About Image"
+                class="w-full  object-cover rounded-lg shadow-lg">
+        </div>
+
+    </div>
+</section>
+<section class="bg-white py-20">
+    <div class="mx-auto px-8">
+        <h2 class="text-2xl font-bold">What Our Customers Say</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+                class="relative grid grid-cols-1 mt-20 gap-4 p-4 border-2 border-gray-300 rounded-lg bg-white shadow-lg">
+                <div class="relative flex gap-4">
+                    <img src="../../../assets/images/comments/billy.png"
+                        class="relative rounded-lg -top-8 -mb-4 bg-white border h-20 w-20" alt="" loading="lazy">
+                    <div class="flex flex-col w-full">
+                        <div class="flex flex-row justify-between">
+                            <p class="relative text-xl whitespace-nowrap truncate overflow-hidden">Billy Herrington
+                            </p>
+                            <a class="text-gray-500 text-xl" href="#"><i class="fa-solid fa-trash"></i></a>
+                        </div>
+                        <p class="text-gray-400 text-sm">20 April 2022, at 14:88 PM</p>
+                    </div>
+                </div>
+                <p class="-mt-4 text-gray-500">Very good restaurant. You can eat very tasty ♂️dick♂️ for only
+                    ♂️three hundred bucks♂️.</p>
+            </div>
+            <div
+                class="relative grid grid-cols-1 mt-20 gap-4 p-4 border-2 border-gray-300 rounded-lg bg-white shadow-lg">
+                <div class="relative flex gap-4">
+                    <img src="../../../assets/images/comments/van.png"
+                        class="relative rounded-lg -top-8 -mb-4 bg-white border h-20 w-20" alt="" loading="lazy">
+                    <div class="flex flex-col w-full">
+                        <div class="flex flex-row justify-between">
+                            <p class="relative text-xl whitespace-nowrap truncate overflow-hidden">Van Darkholme
+                            </p>
+                            <a class="text-gray-500 text-xl" href="#"><i class="fa-solid fa-trash"></i></a>
+                        </div>
+                        <p class="text-gray-400 text-sm">20 April 2022, at 14:88 PM</p>
+                    </div>
+                </div>
+                <p class="-mt-4 text-gray-500">Very good restaurant. You can eat very tasty ♂️dick♂️ for only
+                    ♂️three hundred bucks♂️.</p>
+            </div>
+            <div
+                class="relative grid grid-cols-1 mt-20 gap-4 p-4 border-2 border-gray-300 rounded-lg bg-white shadow-lg">
+                <div class="relative flex gap-4">
+                    <img src="../../../assets/images/comments/steve.png"
+                        class="relative rounded-lg -top-8 -mb-4 bg-white border h-20 w-20" alt="" loading="lazy">
+                    <div class="flex flex-col w-full">
+                        <div class="flex flex-row justify-between">
+                            <p class="relative text-xl whitespace-nowrap truncate overflow-hidden">Steve Rambo
+                            </p>
+                            <a class="text-gray-500 text-xl" href="#"><i class="fa-solid fa-trash"></i></a>
+                        </div>
+                        <p class="text-gray-400 text-sm">20 April 2022, at 14:88 PM</p>
+                    </div>
+                </div>
+                <p class="-mt-4 text-gray-500">Very good restaurant. You can eat very tasty ♂️dick♂️ for only
+                    ♂️three hundred bucks♂️.</p>
+            </div>
+        </div>
+    </div>
+</section>
