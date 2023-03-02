@@ -28,6 +28,8 @@ import { NewsComponent } from './containers/news-view/news/news.component';
 import { NewsViewComponent } from './containers/news-view/news-view.component';
 import { ContactComponent } from './containers/contact/contact.component';
 import { AboutComponent } from './containers/about/about.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 
 @NgModule({
@@ -63,6 +65,8 @@ import { AboutComponent } from './containers/about/about.component';
     MatRadioModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
+    CarouselModule,
+    NgImageSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
