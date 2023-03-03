@@ -23,6 +23,7 @@
     "canvas-confetti": "^1.6.0",
     "flowbite": "^1.6.3",
     "ng-image-slider": "^7.0.0",
+    "ngx-bootstrap": "^10.2.0",
     "ngx-owl-carousel-o": "^15.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

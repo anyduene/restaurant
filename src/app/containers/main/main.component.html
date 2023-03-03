@@ -1,6 +1,13 @@
-<ng-image-slider [images]="imageObject" #nav [animationSpeed]="2" [autoSlide]="true" [slideImage]="true"
-    [imageSize]="{width: '100%', height: 600}" [infinite]="true">
+<ng-image-slider class="hidden sm:block" [images]="imageObject" #nav [animationSpeed]="1.5"
+    [autoSlide]="{interval: 4, stopOnHover: false}" [slideImage]="true" [infinite]="true"
+    [imageSize]="{width: '100%', height: 600}" [manageImageRatio]="true">
 </ng-image-slider>
+
+<ng-image-slider class="block sm:hidden mt-4" [images]="imageObject" #nav [animationSpeed]="1.5"
+    [autoSlide]="{interval: 4, stopOnHover: false}" [slideImage]="true" [infinite]="true"
+    [imageSize]="{width: '100%', height: 180}">
+</ng-image-slider>
+
 <div class="h-1 bg-gray-400"></div>
 
 <section class="bg-gray-100 py-10">

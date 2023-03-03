@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +31,9 @@ import { ContactComponent } from './containers/contact/contact.component';
 import { AboutComponent } from './containers/about/about.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
+
 
 
 @NgModule({
@@ -67,8 +71,11 @@ import { NgImageSliderModule } from 'ng-image-slider';
     MatProgressSpinnerModule,
     CarouselModule,
     NgImageSliderModule,
+    MatInputModule,
+    MatDialogModule,
+    ModalModule.forRoot(),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [BsModalRef],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

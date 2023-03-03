@@ -94,8 +94,8 @@
                 Code</label>
             <input type="text" id="promo" placeholder="Enter your code" class="p-2 text-sm w-full" [(ngModel)]="promo">
         </div>
-        <button class="bg-gray-300 px-5 py-2 text-sm text-white uppercaser rounded-md mt-2"
-            (click)="applyPromoCode()" [disabled]="totalCount === 0" [ngClass]="{'bg-red-500 hover:bg-red-600': totalCount > 0}">Apply</button>
+        <button class="bg-gray-300 px-5 py-2 text-sm text-white uppercaser rounded-md mt-2" (click)="applyPromoCode()"
+            [disabled]="totalCount === 0" [ngClass]="{'bg-red-500 hover:bg-red-600': totalCount > 0}">Apply</button>
         <div class="border-t mt-8">
             <div class="flex font-semibold justify-between py-6 text-sm uppercase h-10">
                 <span class="text-gray-500">Total cost</span>
@@ -119,6 +119,9 @@
                 [ngClass]="{'bg-teal-400 hover:bg-teal-600': totalCount > 0}">
                 Checkout
             </button>
+            <!-- <button mat-raised-button (click)="openDialog('0ms', '0ms')"
+                class="bg-gray-300 font-semibold py-3 text-sm text-white uppercase w-full rounded-md mt-3">Open dialog
+                without animation</button> -->
 
 
 
@@ -138,48 +141,56 @@
                                 <div class="leading-loose">
                                     <form class="max-w-xl p-2 bg-white rounded">
                                         <h1 class="text-center text-xl font-semibold">Checkout</h1>
-                                        <p class="text-gray-800 font-semibold">Customer information</p>
-                                        <div class="inline-block mt-2 w-1/2 pr-1">
-                                            <label class="text-gray-600">Name</label>
-                                            <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                                                id="cus_email" name="cus_email" type="text" required placeholder="Name"
-                                                aria-label="Name" required>
-                                        </div>
+                                        <p class="text-gray-800 font-semibold mb-3">Customer information</p>
 
                                         <div class="example-container">
-                                            <mat-form-field appearance="fill">
-                                              <mat-label>Enter your email</mat-label>
-                                              <input matInput placeholder="pat@example.com" [formControl]="email" required>
-                                              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                                            <mat-form-field appearance="outline" class="w-full">
+                                                <mat-label>Enter name</mat-label>
+                                                <input matInput placeholder="Name" required #nameInput
+                                                    [formControl]="name">
+                                                <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
                                             </mat-form-field>
-                                          </div>
-
-                                        <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                                            <label class="text-gray-600">Surname</label>
-                                            <input type="number"
-                                                class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" required
-                                                placeholder="Surname" maxlength="10">
                                         </div>
-                                        <div class="mt-2">
-                                            <label class="block text-gray-600">Phone number</label>
-                                            <input class="w-full px-2  py-2 text-gray-700 bg-gray-200 rounded"
-                                                type="text" required placeholder="123-456-78-90" maxlength="10">
+                                        <div class="example-container">
+                                            <mat-form-field appearance="outline" class="w-full">
+                                                <mat-label>Enter surname</mat-label>
+                                                <input matInput placeholder="Surname" required #surnameInput
+                                                    [formControl]="surname">
+                                                <mat-error *ngIf="surname.invalid">{{getErrorMessage()}}</mat-error>
+                                            </mat-form-field>
                                         </div>
-                                        <div class="mt-2">
-                                            <label class="block text-gray-600">Email</label>
-                                            <input class="w-full px-2  py-2 text-gray-700 bg-gray-200 rounded"
-                                                type="text" required placeholder="name@gmail.com">
+                                        <div class="example-container">
+                                            <mat-form-field appearance="outline" class="w-full">
+                                                <mat-label>Enter email</mat-label>
+                                                <input matInput placeholder="pepperonis@example.com"
+                                                    [formControl]="email" required #emailInput>
+                                                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                                            </mat-form-field>
                                         </div>
-                                        <div class="mt-2">
-                                            <label class="block text-gray-600">Address</label>
-                                            <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                                                type="text" required placeholder="Adress">
+                                        <div class="example-container">
+                                            <mat-form-field appearance="outline" class="w-full">
+                                                <mat-label>Enter phone number</mat-label>
+                                                <input matInput placeholder="012-345-6789" type="number"
+                                                    [formControl]="number" required #numberInput>
+                                                <mat-error *ngIf="number.invalid">{{getErrorMessage()}}</mat-error>
+                                            </mat-form-field>
                                         </div>
-                                        <p class="mt-4 text-gray-800 font-semibold">Payment information</p>
-                                        <div class="">
-                                            <label class="block text-gray-600" for="cus_name">Card number</label>
-                                            <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                                                type="number" required placeholder="xxxx xxxx xxxx xxxx">
+                                        <div class="example-container">
+                                            <mat-form-field appearance="outline" class="w-full">
+                                                <mat-label>Enter adress</mat-label>
+                                                <input matInput placeholder="Monastyrska str. 4" [formControl]="adress"
+                                                    required #adressInput>
+                                                <mat-error *ngIf="adress.invalid">{{getErrorMessage()}}</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <p class="text-gray-800 font-semibold mb-3">Payment information</p>
+                                        <div class="example-container">
+                                            <mat-form-field appearance="outline" class="w-full">
+                                                <mat-label>Enter card number</mat-label>
+                                                <input matInput placeholder="xxxx xxxx xxxx xxxx" [formControl]="card"
+                                                    required #cardInput type="number">
+                                                <mat-error *ngIf="card.invalid">{{getErrorMessage()}}</mat-error>
+                                            </mat-form-field>
                                         </div>
                                         <div class="h-1 bg-gray-300 mt-4"></div>
                                         <div class="mt-4">
@@ -188,14 +199,17 @@
                                                     <div>
                                                         <span class="text-gray-600 text-lg mr-2">Total: </span>
                                                         <span class="text-red-500 text-xl mr-1">
-                                                            {{ (totalAmount * ((100 - discount) / 100)) / 100 | currency:'UAH':'symbol-narrow':'1.2-2' }}
+                                                            {{ (totalAmount * ((100 - discount) / 100)) / 100 |
+                                                            currency:'UAH':'symbol-narrow':'1.2-2' }}
                                                         </span>
                                                         <span class="text-red-500 text-xl mr-auto">(-{{discount}}%)
                                                         </span>
                                                     </div>
 
                                                     <div><span class="text-gray-600 text-lg">Discount: </span><span
-                                                            class="text-red-400 text-lg">{{ (totalCost - (totalAmount * ((100 - discount) / 100))) / 100 | currency:'UAH':'symbol-narrow':'1.2-2'}}
+                                                            class="text-red-400 text-lg">{{ (totalCost - (totalAmount *
+                                                            ((100 - discount) / 100))) / 100 |
+                                                            currency:'UAH':'symbol-narrow':'1.2-2'}}
                                                         </span>
                                                     </div>
                                                 </div>
@@ -210,7 +224,8 @@
 
                                                     <div>
                                                         <span class="text-gray-600 text-lg">Discount: </span><span
-                                                            class="text-red-400 text-lg">{{ ((totalDiscount - totalAmount)
+                                                            class="text-red-400 text-lg">{{ ((totalDiscount -
+                                                            totalAmount)
                                                             / 100) | currency:'UAH':'symbol-narrow':'1.2-2'}}
                                                         </span>
                                                     </div>
@@ -218,7 +233,8 @@
                                             </div>
                                             <button type="submit" (click)="order()" (click)="closeForm()"
                                                 class="px-4 py-1 mt-3 w-full text-white text-lg font-semibold texy-canter tracking-wider bg-teal-400 hover:bg-teal-600 rounded-md"
-                                                type="submit">Order</button>
+                                                type="submit"
+                                                [disabled]="!nameInput.value || !surnameInput.value || !emailInput.value || !numberInput.value || !cardInput.value || !adressInput.value">Order</button>
                                         </div>
                                     </form>
                                 </div>
