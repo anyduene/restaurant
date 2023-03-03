@@ -90,7 +90,7 @@
             </mat-radio-group>
         </div>
         <div class="py-2">
-            <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase text-gray-500">Promo
+            <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase text-gray-500 rounded">Promo
                 Code</label>
             <input type="text" id="promo" placeholder="Enter your code" class="p-2 text-sm w-full" [(ngModel)]="promo">
         </div>
@@ -119,11 +119,6 @@
                 [ngClass]="{'bg-teal-400 hover:bg-teal-600': totalCount > 0}">
                 Checkout
             </button>
-            <!-- <button mat-raised-button (click)="openDialog('0ms', '0ms')"
-                class="bg-gray-300 font-semibold py-3 text-sm text-white uppercase w-full rounded-md mt-3">Open dialog
-                without animation</button> -->
-
-
 
             <div class="fixed z-10 inset-0 overflow-y-auto" *ngIf="show">
                 <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -143,7 +138,7 @@
                                         <h1 class="text-center text-xl font-semibold">Checkout</h1>
                                         <p class="text-gray-800 font-semibold mb-3">Customer information</p>
 
-                                        <div class="example-container">
+                                        <div class="example-container mb-2">
                                             <mat-form-field appearance="outline" class="w-full">
                                                 <mat-label>Enter name</mat-label>
                                                 <input matInput placeholder="Name" required #nameInput
@@ -151,7 +146,7 @@
                                                 <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
                                             </mat-form-field>
                                         </div>
-                                        <div class="example-container">
+                                        <div class="example-container mb-2">
                                             <mat-form-field appearance="outline" class="w-full">
                                                 <mat-label>Enter surname</mat-label>
                                                 <input matInput placeholder="Surname" required #surnameInput
@@ -159,15 +154,15 @@
                                                 <mat-error *ngIf="surname.invalid">{{getErrorMessage()}}</mat-error>
                                             </mat-form-field>
                                         </div>
-                                        <div class="example-container">
+                                        <div class="example-container mb-2">
                                             <mat-form-field appearance="outline" class="w-full">
                                                 <mat-label>Enter email</mat-label>
                                                 <input matInput placeholder="pepperonis@example.com"
                                                     [formControl]="email" required #emailInput>
-                                                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                                                <mat-error *ngIf="email.invalid">{{getErrorMessageEmail()}}</mat-error>
                                             </mat-form-field>
                                         </div>
-                                        <div class="example-container">
+                                        <div class="example-container mb-2">
                                             <mat-form-field appearance="outline" class="w-full">
                                                 <mat-label>Enter phone number</mat-label>
                                                 <input matInput placeholder="012-345-6789" type="number"
@@ -175,7 +170,7 @@
                                                 <mat-error *ngIf="number.invalid">{{getErrorMessage()}}</mat-error>
                                             </mat-form-field>
                                         </div>
-                                        <div class="example-container">
+                                        <div class="example-container mb-2">
                                             <mat-form-field appearance="outline" class="w-full">
                                                 <mat-label>Enter adress</mat-label>
                                                 <input matInput placeholder="Monastyrska str. 4" [formControl]="adress"
@@ -232,9 +227,11 @@
                                                 </div>
                                             </div>
                                             <button type="submit" (click)="order()" (click)="closeForm()"
-                                                class="px-4 py-1 mt-3 w-full text-white text-lg font-semibold texy-canter tracking-wider bg-teal-400 hover:bg-teal-600 rounded-md"
+                                                class="px-4 py-1 mt-3 w-full text-white text-lg font-semibold texy-canter tracking-wider bg-gray-300 rounded-md"
                                                 type="submit"
-                                                [disabled]="!nameInput.value || !surnameInput.value || !emailInput.value || !numberInput.value || !cardInput.value || !adressInput.value">Order</button>
+                                                [disabled]="!nameInput.value || !surnameInput.value || !emailInput.value || !numberInput.value || !cardInput.value || !adressInput.value"
+                                                [ngClass]="{'bg-teal-400 hover:bg-teal-600': nameInput.value && surnameInput.value && emailInput.value && numberInput.value && cardInput.value && adressInput.value }">Order
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
