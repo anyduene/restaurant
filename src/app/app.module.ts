@@ -33,6 +33,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
+import { RestaurantsComponent } from './containers/restaurants/restaurants.component';
 
 
 
@@ -57,6 +58,7 @@ import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
     NewsViewComponent,
     ContactComponent,
     AboutComponent,
+    RestaurantsComponent,
   ],
   imports: [
     BrowserModule,

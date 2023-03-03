@@ -9,6 +9,7 @@ import { ErrorComponent } from './shared/error/error.component';
 import { NewsViewComponent } from './containers/news-view/news-view.component';
 import { ContactComponent } from './containers/contact/contact.component';
 import { AboutComponent } from './containers/about/about.component';
+import { RestaurantsComponent } from './containers/restaurants/restaurants.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'menu/dishes/:dish', component: DishDetailViewComponent },
   { path: 'menu/categories/:category/dishes/:dish', component: DishDetailViewComponent },
   { path: 'cart', component: CartViewComponent },
+  { path: 'restaurants', component: RestaurantsComponent },
   { path: '**', component: ErrorComponent },
 ]
 
