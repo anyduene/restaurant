@@ -1,11 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CartItem } from 'src/app/models/cart-item';
-import { Dish } from 'src/app/models/dish';
-import { Promo } from 'src/app/models/promo';
 import { PromoCodes } from 'src/app/services/promo-codes';
 import { FormControl, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { MatDialogRef } from '@angular/material/dialog';
 
 
 @Component({

@@ -10,23 +10,31 @@
     <div class="flex flex-wrap">
       <div class="grow-0 shrink-0 basis-auto mb-12 lg:mb-0 w-full lg:w-5/12 px-3 lg:px-6">
         <form>
-          <div class="form-group mb-6">
-            <input type="text"
-              class="form-control block w-full px-3 py-3 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0"
-              placeholder="Name">
+          <div class="example-container mb-2">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Enter name</mat-label>
+              <input matInput placeholder="Name" required #nameInput [formControl]="name">
+              <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
           </div>
-          <div class="form-group mb-6">
-            <input type="email"
-              class="form-control block w-full px-3 py-3 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0"
-              placeholder="Email address">
+          <div class="example-container mb-2">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Enter email</mat-label>
+              <input matInput placeholder="Name" required #emailInput [formControl]="email">
+              <mat-error *ngIf="name.invalid">{{getErrorMessageEmail()}}</mat-error>
+            </mat-form-field>
           </div>
-          <div class="form-group mb-6">
-            <textarea
-              class=" form-control block w-full px-3 py-3 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 resize-none h-36"
-              rows="3" placeholder="Message"></textarea>
+          <div class="example-container mb-2">
+            <mat-form-field appearance="outline" class="w-full h-36">
+              <mat-label>Write your comment</mat-label>
+              <input matInput placeholder="Your comment" required #commentInput [formControl]="comment">
+              <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
           </div>
-          <button type="submit"
-            class=" w-full px-6 py-3 bg-teal-500 text-white font-medium leading-tight uppercase rounded shadow-md hover:bg-teal-600 hover:shadow-lg focus:bg-teal-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-teal-700 active:shadow-lg transition duration-150 ease-in-out">Send</button>
+          <button type="submit" (click)="onSend()" (click)="openSnackBar()"
+            [disabled]="!nameInput.value || !emailInput.value || !commentInput.value"
+            [ngClass]="{'bg-teal-400 hover:bg-teal-600 hover:shadow-lg active:bg-teal-700 active:shadow-lg transition duration-150 ease-in-out': nameInput.value && emailInput.value && commentInput.value}"
+            class=" w-full px-6 py-3 bg-gray-300 text-white font-medium leading-tight uppercase rounded shadow-md ">Send</button>
         </form>
       </div>
       <div class="grow-0 shrink-0 basis-auto w-full lg:w-7/12">
