@@ -1,4 +1,4 @@
-<div class="flex my-6 mx-4 sm:flex-row gap-1">
+<div class="flex flex-col my-6 mx-4 sm:flex-row gap-1">
     <div class="bg-gray-200 rounded-xl sm:mx-4 sm:w-8/12 grid justify-items-center">
         <img src="{{dish.img}}" alt="{{dish.name}}">
     </div>
@@ -20,7 +20,7 @@
                     class="text-gray-600 ml-1">{{dish.categoryName}}</span>
             </p>
             <p class="text-left text-2xl text-gray-800 mb-1" *ngIf="dish.categoryId === 1">Diameter: <span
-                class="text-gray-600 ml-1">25cm</span>
+                    class="text-gray-600 ml-1">25cm</span>
             </p>
             <p class="text-left text-2xl text-gray-800" *ngIf="dish.categoryId != 4">Weight: <span
                     class="text-gray-600 ml-1">{{dish.weight}}</span>
